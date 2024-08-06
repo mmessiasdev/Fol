@@ -1,0 +1,17 @@
+
+First Impression
+
+When the user start app, the firt impression should be freedom. The user will redirect at the screen with users posters and texts in around world.
+
+
+Color
+
+The app should have a clean aspect. All interface will have colors focus beetwen White and Gray.
+
+
+Home Page
+
+Home page app will have a sensation of the liberty. Will not be a login screen or a screen text. The user should't have difficulty for the using the app. 
+
+
+Figma project: https://www.figma.com/design/PrtB02sWaceRJH5RXTYJu5/Fol?node-id=43-2&t=QRgSuCo5DSTh0mQ0-0
