@@ -37,6 +37,9 @@
     "likes": {
       "collection": "profile",
       "via": "post"
+    },
+    "content": {
+      "type": "text"
     }
   }
 }
