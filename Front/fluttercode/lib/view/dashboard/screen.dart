@@ -49,27 +49,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             bottomNavigationBar: Container(
-              height: 70,
+              height: 50,
               decoration: BoxDecoration(
-                color: SecudaryColor,
+                color: SixthColor,
               ),
               child: SnakeNavigationBar.color(
                 snakeShape: SnakeShape.rectangle,
-                backgroundColor: SecudaryColor,
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                unselectedItemColor: OffColor,
+                backgroundColor: SixthColor,
+                unselectedItemColor: nightColor,
                 showUnselectedLabels: true,
-                snakeViewColor: SecudaryColor,
+                selectedItemColor: OffColor,
+                snakeViewColor: SixthColor,
                 currentIndex: controller.tabIndex,
                 onTap: (val) {
                   controller.updateIndex(val);
                 },
                 items: const [
+                  BottomNavigationBarItem(icon: Icon(Icons.home_filled)),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.home_rounded), label: 'Home'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.text_format_rounded),
-                      label: 'Diário'),
+                    icon: Icon(Icons.lock_rounded),
+                  ),
                 ],
               ),
             ),

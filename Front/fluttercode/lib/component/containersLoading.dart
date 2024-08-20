@@ -13,22 +13,22 @@ class PostsLoading extends StatelessWidget {
         child: Shimmer.fromColors(
           direction: ShimmerDirection.ltr,
           period: Duration(milliseconds: 2500),
-          baseColor: PrimaryColor,
-          highlightColor: SecudaryColor,
+          baseColor: SixthColor,
+          highlightColor: TerciaryColor,
           child: ListView.builder(
-              itemCount: 2,
+              itemCount: 3,
               // separatorBuilder: (_, __) => const SizedBox(
               //       height: 15,
               //     ),
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 50),
                   child: Container(
                     height: 200,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: PrimaryColor,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 );

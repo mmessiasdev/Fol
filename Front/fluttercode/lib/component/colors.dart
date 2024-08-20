@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final Color PrimaryColor = Color(0xFFFD9D9D9);
 final Color SecudaryColor = Color(0xFFFBFBFBF);
 final Color TerciaryColor = Color(0xFFFFFFFF);
-final Color FourtyColor = Color(0xFFFF00FF85);
+final Color FourtyColor = Color.fromARGB(255, 0, 255, 133);
 final Color FifthColor = Color(0xFFFF05757);
 final Color SixthColor = Color.fromARGB(255, 244, 244, 244);
 

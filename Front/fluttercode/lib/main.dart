@@ -13,9 +13,9 @@ Future main() async {
   await dotenv.load(fileName: ".env");
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: TerciaryColor, // cor da barra superior
+    statusBarColor: lightColor, // cor da barra superior
     statusBarIconBrightness: Brightness.dark, // ícones da barra superior
-    systemNavigationBarColor: SecudaryColor, // cor da barra inferior
+    systemNavigationBarColor: SixthColor, // cor da barra inferior
     systemNavigationBarIconBrightness:
         Brightness.dark, // ícones da barra inferior
   ));
