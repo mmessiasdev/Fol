@@ -17,7 +17,7 @@ class InfoInputLogin extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SubText(text: title, color: nightColor, align: TextAlign.start),
+          SubText(text: title, align: TextAlign.start),
           SizedBox(
             height: 5,
           ),
@@ -30,7 +30,7 @@ class InfoInputLogin extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: SubText(
-                    text: info, color: nightColor, align: TextAlign.start),
+                    text: info, align: TextAlign.start),
               ),
             ),
           ),

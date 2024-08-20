@@ -1,4 +1,9 @@
+import 'package:Bloguee/component/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryText extends StatelessWidget {
@@ -100,10 +105,14 @@ class ButtomSecundary extends StatelessWidget {
 }
 
 class SubText extends StatelessWidget {
-  SubText({required this.text, required this.color, required this.align});
+  SubText({
+    required this.text,
+    required this.align,
+    this.color,
+  });
   String text;
-  Color color;
   TextAlign align;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -113,8 +122,9 @@ class SubText extends StatelessWidget {
         textAlign: align,
         style: GoogleFonts.montserrat(
           fontSize: 16,
+          color: color == null ? nightColor : color,
           textStyle: TextStyle(
-            color: color,
+            color: nightColor,
             decoration: TextDecoration.none,
           ),
         ),
@@ -126,12 +136,12 @@ class SubText extends StatelessWidget {
 class SubTextSized extends StatelessWidget {
   SubTextSized(
       {required this.text,
-      required this.color,
+      this.color,
       required this.align,
       required this.size,
       required this.fontweight});
   String text;
-  Color color;
+  Color? color;
   TextAlign align;
   double size;
   FontWeight fontweight;
@@ -145,11 +155,46 @@ class SubTextSized extends StatelessWidget {
         style: GoogleFonts.montserrat(
           fontSize: size,
           textStyle: TextStyle(
-            color: color,
+            color: color == null ? nightColor : color,
             fontWeight: fontweight,
             decoration: TextDecoration.none,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RichDefaultText extends StatelessWidget {
+  RichDefaultText(
+      {required this.wid,
+      required this.text,
+      required this.align,
+      required this.size,
+      required this.fontweight});
+
+  Widget wid;
+  String text;
+  TextAlign align;
+  double size;
+  FontWeight fontweight;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: text, // Texto antes do botão
+        style: GoogleFonts.montserrat(
+          fontSize: size,
+          textStyle: TextStyle(
+            color: nightColor,
+            fontWeight: fontweight,
+            decoration: TextDecoration.none,
+          ),
+        ),
+        children: <InlineSpan>[
+          WidgetSpan(alignment: PlaceholderAlignment.middle, child: wid),
+        ],
       ),
     );
   }

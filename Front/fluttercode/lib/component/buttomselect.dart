@@ -51,7 +51,6 @@ class ButtomSelect extends StatelessWidget {
                             fontweight: FontWeight.bold,
                             size: 15,
                             text: name,
-                            color: colorText,
                             align: TextAlign.start,
                           ),
                         ),
@@ -65,7 +64,6 @@ class ButtomSelect extends StatelessWidget {
                                 SubTextSized(
                                   size: 12,
                                   align: TextAlign.start,
-                                  color: colorText,
                                   text: time,
                                   fontweight: FontWeight.w700,
                                 ),
@@ -74,7 +72,6 @@ class ButtomSelect extends StatelessWidget {
                                 ),
                                 SubText(
                                   text: data,
-                                  color: colorText,
                                   align: TextAlign.start,
                                 ),
                               ],

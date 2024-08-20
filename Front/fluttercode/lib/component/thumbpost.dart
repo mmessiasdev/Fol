@@ -36,7 +36,6 @@ class ThumbPost extends StatelessWidget {
                 child: SubText(
                   text: desc,
                   align: TextAlign.start,
-                  color: SecudaryColor,
                 ),
               ),
               SizedBox(
@@ -46,7 +45,6 @@ class ThumbPost extends StatelessWidget {
                   child: SubTextSized(
                     text: data,
                     align: TextAlign.end,
-                    color: nightColor,
                     size: 15,
                     fontweight: FontWeight.w600,
                   ),

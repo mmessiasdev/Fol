@@ -49,7 +49,6 @@ class WidgetPosts extends StatelessWidget {
                   child: SubText(
                     text: desc,
                     align: TextAlign.start,
-                    color: SecudaryColor,
                   ),
                 ),
                 SizedBox(
@@ -59,7 +58,6 @@ class WidgetPosts extends StatelessWidget {
                     child: SubTextSized(
                       text: updatedAt,
                       align: TextAlign.end,
-                      color: nightColor,
                       size: 15,
                       fontweight: FontWeight.w600,
                     ),

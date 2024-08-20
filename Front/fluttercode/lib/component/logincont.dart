@@ -50,11 +50,17 @@ class _LoginContentState extends State<LoginContent> {
                   text: 'Faça Login',
                   color: nightColor,
                   align: TextAlign.start),
-              SecundaryText(
-                  text:
-                      'Compartilhe seus momentos com seus amigos ou com você mesmo.',
-                  color: nightColor,
-                  align: TextAlign.start),
+              RichDefaultText(
+                  wid: SubTextSized(
+                    align: TextAlign.start,
+                    fontweight: FontWeight.w600,
+                    text: "com você mesmo.",
+                    size: 20,
+                  ),
+                  text: "Compartilhe seus momentos com seus amigos ou ",
+                  align: TextAlign.start,
+                  size: 20,
+                  fontweight: FontWeight.w300),
               const SizedBox(height: 40),
               Form(
                 key: _formKey,
@@ -88,14 +94,26 @@ class _LoginContentState extends State<LoginContent> {
                     ),
                     const SizedBox(height: 40),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: SubText(
-                              text: "Não tem login? Crie uma conta.",
-                              color: nightColor,
-                              align: TextAlign.start),
-                        ),
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: RichDefaultText(
+                                wid: GestureDetector(
+                                  onTap: () {},
+                                  child: SubTextSized(
+                                    align: TextAlign.start,
+                                    color: FourtyColor,
+                                    size: 16,
+                                    text: "Crie uma conta.",
+                                    fontweight: FontWeight.w600,
+                                  ),
+                                ),
+                                text: "Não tem login? ",
+                                align: TextAlign.start,
+                                size: 16,
+                                fontweight: FontWeight.normal)),
                         SizedBox(
                           width: 20,
                         ),
@@ -103,6 +121,10 @@ class _LoginContentState extends State<LoginContent> {
                           maxRadius: 40,
                           backgroundColor: FourtyColor,
                           child: GestureDetector(
+                            child: Icon(
+                              Icons.login,
+                              color: lightColor,
+                            ),
                             onTap: () {
                               if (_formKey.currentState!.validate()) {
                                 authController.signIn(
