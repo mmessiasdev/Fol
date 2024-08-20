@@ -49,7 +49,6 @@ class _PostsScreenState extends State<PostsScreen> {
           padding: defaultPaddingHorizon,
           child: Column(
             children: [
-              SizedBox(height: 40),
               FutureBuilder<List<PostsNoAuth>>(
                 future: RemoteAuthService().getPostsNoAuth(),
                 builder: (context, snapshot) {

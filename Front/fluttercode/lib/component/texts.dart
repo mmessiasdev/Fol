@@ -137,12 +137,12 @@ class SubTextSized extends StatelessWidget {
   SubTextSized(
       {required this.text,
       this.color,
-      required this.align,
+      this.align,
       required this.size,
       required this.fontweight});
   String text;
   Color? color;
-  TextAlign align;
+  TextAlign? align;
   double size;
   FontWeight fontweight;
 
@@ -151,7 +151,7 @@ class SubTextSized extends StatelessWidget {
     return SizedBox(
       child: Text(
         text,
-        textAlign: align,
+        textAlign: align == null ? TextAlign.start : align,
         style: GoogleFonts.montserrat(
           fontSize: size,
           textStyle: TextStyle(

@@ -20,62 +20,54 @@ class WidgetPosts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        // constraints: BoxConstraints(maxWidth: 400),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: PrimaryColor,
-        ),
-        child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: SecundaryText(
-                      text: plname,
-                      color: SecudaryColor,
-                      align: TextAlign.start),
-                ),
-                SecundaryText(
-                  text: title,
-                  align: TextAlign.start,
-                  color: nightColor,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: SubText(
-                    text: desc,
-                    align: TextAlign.start,
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: SubTextSized(
-                      text: updatedAt,
-                      align: TextAlign.end,
-                      size: 15,
-                      fontweight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            )),
-      ),
-      onTap: () {
-        (Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PostScreen(
-              id: id,
-            ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 50),
+      child: GestureDetector(
+        child: Container(
+          // constraints: BoxConstraints(maxWidth: 400),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
           ),
-        ));
-      },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: PrimaryColor,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  SubTextSized(
+                      text: plname,
+                      align: TextAlign.start,
+                      size: 24,
+                      fontweight: FontWeight.bold)
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: SubTextSized(
+                  text: desc,
+                  size: 15,
+                  fontweight: FontWeight.normal,
+                ),
+              ),
+            ],
+          ),
+        ),
+        onTap: () {
+          (Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PostScreen(
+                id: id,
+              ),
+            ),
+          ));
+        },
+      ),
     );
   }
 }
