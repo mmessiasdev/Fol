@@ -6,6 +6,7 @@ import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/extention/string_extention.dart';
+import 'package:Bloguee/view/account/auth/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginContent extends StatefulWidget {
@@ -45,9 +46,10 @@ class _LoginContentState extends State<LoginContent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PrimaryText(
-                text: 'Faça Login',
-                color: nightColor,
-                align: TextAlign.start),
+                text: 'Faça Login', color: nightColor, align: TextAlign.start),
+            SizedBox(
+              height: 15,
+            ),
             RichDefaultText(
                 wid: SubTextSized(
                   align: TextAlign.start,
@@ -99,13 +101,21 @@ class _LoginContentState extends State<LoginContent> {
                           width: MediaQuery.of(context).size.width * 0.6,
                           child: RichDefaultText(
                               wid: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  (Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignUpScreen(),
+                                    ),
+                                  ));
+                                },
                                 child: SubTextSized(
                                   align: TextAlign.start,
                                   color: FourtyColor,
                                   size: 16,
                                   text: "Crie uma conta.",
                                   fontweight: FontWeight.w600,
+                                  tdeco: TextDecoration.underline,
                                 ),
                               ),
                               text: "Não tem login? ",
@@ -120,7 +130,7 @@ class _LoginContentState extends State<LoginContent> {
                         backgroundColor: FourtyColor,
                         child: GestureDetector(
                           child: Icon(
-                            Icons.login,
+                            Icons.arrow_right_alt,
                             color: lightColor,
                           ),
                           onTap: () {

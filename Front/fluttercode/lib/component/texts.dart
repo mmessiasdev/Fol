@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:Bloguee/component/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,17 +9,17 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryText extends StatelessWidget {
-  PrimaryText({required this.text, required this.color, required this.align});
+  PrimaryText({required this.text, required this.color, this.align});
   String text;
   Color color;
-  TextAlign align;
+  TextAlign? align;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: Text(
         text,
-        textAlign: align,
+        textAlign: align == null ? TextAlign.start : align,
         style: GoogleFonts.montserrat(
           fontSize: 48,
           textStyle: TextStyle(
@@ -139,12 +141,14 @@ class SubTextSized extends StatelessWidget {
       this.color,
       this.align,
       required this.size,
-      required this.fontweight});
+      required this.fontweight,
+      this.tdeco});
   String text;
   Color? color;
   TextAlign? align;
   double size;
   FontWeight fontweight;
+  TextDecoration? tdeco;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +161,7 @@ class SubTextSized extends StatelessWidget {
           textStyle: TextStyle(
             color: color == null ? nightColor : color,
             fontWeight: fontweight,
-            decoration: TextDecoration.none,
+            decoration: tdeco == null ? TextDecoration.none : tdeco,
           ),
         ),
       ),

@@ -39,6 +39,12 @@ class _PostsScreenState extends State<PostsScreen> {
     });
   }
 
+  Widget ManutentionErro() {
+    return ErrorPost(
+      text: "Estamos passando por uma manutenção. Entre novamente mais tarde!",
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return token == null
@@ -56,12 +62,7 @@ class _PostsScreenState extends State<PostsScreen> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const PostsLoading();
                     } else if (snapshot.hasError) {
-                      return Center(
-                        child: ErrorPost(
-                          text:
-                              "Estamos passando por uma manutenção. Entre novamente mais tarde!",
-                        ),
-                      );
+                      return Center(child: ManutentionErro());
                     } else if (snapshot.hasData) {
                       var posts = snapshot.data!;
                       return ListView.builder(
@@ -91,21 +92,69 @@ class _PostsScreenState extends State<PostsScreen> {
             ),
           )
         : Padding(
-            padding: defaultPaddingHorizon,
-            child: Column(
+            padding: defaultPadding,
+            child: ListView(
               children: [
+                PrimaryText(
+                    text: "Seja bem vindo,\n$token!", color: nightColor),
+                SizedBox(
+                  height: 15,
+                ),
+                RichDefaultText(
+                    wid: SubTextSized(
+                      align: TextAlign.start,
+                      fontweight: FontWeight.w600,
+                      text: "com você mesmo.",
+                      size: 20,
+                    ),
+                    text: "Compartilhe seus momentos com seus amigos ou ",
+                    align: TextAlign.start,
+                    size: 20,
+                    fontweight: FontWeight.w300),
+                SizedBox(
+                  height: 70,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 208,
+                      decoration: BoxDecoration(
+                        color: PrimaryColor,
+                        borderRadius: BorderRadius.circular(23),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          child: Icon(
+                            Icons.image,
+                            size: 33,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: CircleAvatar(
+                            maxRadius: 40,
+                            backgroundColor: FourtyColor,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 70,),
                 FutureBuilder<List<PostsNoAuth>>(
                   future: RemoteAuthService().getPostsNoAuth(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const PostsLoading();
                     } else if (snapshot.hasError) {
-                      return Center(
-                        child: ErrorPost(
-                          text:
-                              "Estamos passando por uma manutenção. Entre novamente mais tarde!",
-                        ),
-                      );
+                      return Center(child: ManutentionErro());
                     } else if (snapshot.hasData) {
                       var posts = snapshot.data!;
                       return ListView.builder(
