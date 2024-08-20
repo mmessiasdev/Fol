@@ -16,7 +16,6 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   var token;
-  var chunkId;
 
   @override
   void initState() {

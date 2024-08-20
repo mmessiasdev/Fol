@@ -97,18 +97,19 @@ class RemoteAuthService {
   //   return itens;
   // }
 
-  Future addPost({
-    required String? title,
-    required String? desc,
-    required String? content,
-    required int? profileId,
-    required String? token,
-  }) async {
+  Future addPost(
+      {required String? title,
+      required String? desc,
+      required String? content,
+      required int? profileId,
+      required String? token,
+      required bool? public}) async {
     final body = {
       "title": title.toString(),
       "desc": desc.toString(),
       "content": content.toString(),
       "profile": profileId.toString(),
+      "public": public,
     };
     var response = await client.post(
       Uri.parse('$url/posts'),

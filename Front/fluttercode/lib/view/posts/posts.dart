@@ -2,6 +2,7 @@ import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/inputdefault.dart';
 import 'package:Bloguee/component/logincont.dart';
 import 'package:Bloguee/component/post.dart';
+import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/model/postsnauth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,9 @@ class _PostsScreenState extends State<PostsScreen> {
   var client = http.Client();
 
   String? token;
+  String? fname;
+  var id;
+  bool public = false;
 
   @override
   void initState() {
@@ -34,10 +38,26 @@ class _PostsScreenState extends State<PostsScreen> {
 
   void getString() async {
     var strToken = await LocalAuthService().getSecureToken("token");
+    var strFname = await LocalAuthService().getFname("fname");
+    var strId = await LocalAuthService().getId("id");
 
     setState(() {
       token = strToken;
+      id = strId;
+      fname = strFname;
     });
+  }
+
+  TextEditingController content = TextEditingController();
+  TextEditingController title = TextEditingController();
+  TextEditingController desc = TextEditingController();
+
+  @override
+  void dispose() {
+    content.dispose();
+    title.dispose();
+    desc.dispose();
+    super.dispose();
   }
 
   Widget ManutentionErro() {
@@ -50,7 +70,7 @@ class _PostsScreenState extends State<PostsScreen> {
   Widget build(BuildContext context) {
     return token == null
         ? Padding(
-            padding: defaultPaddingHorizon,
+            padding: defaultPaddingHorizonTop,
             child: ListView(
               children: [
                 const LoginContent(),
@@ -93,11 +113,10 @@ class _PostsScreenState extends State<PostsScreen> {
             ),
           )
         : Padding(
-            padding: defaultPadding,
+            padding: defaultPaddingHorizonTop,
             child: ListView(
               children: [
-                PrimaryText(
-                    text: "Seja bem vindo,\n$token!", color: nightColor),
+                PrimaryText(text: "Seja bem vindo, $fname!", color: nightColor),
                 SizedBox(
                   height: 15,
                 ),
@@ -121,7 +140,8 @@ class _PostsScreenState extends State<PostsScreen> {
                       title: "",
                       width: double.infinity,
                       fill: true,
-                      minLines: 7,
+                      minLines: 6,
+                      textEditingController: content,
                     ),
                     SizedBox(
                       height: 20,
@@ -129,17 +149,48 @@ class _PostsScreenState extends State<PostsScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          child: Icon(
-                            Icons.image,
-                            size: 33,
+                        Column(
+                          children: [
+                            GestureDetector(
+                              child: Icon(
+                                Icons.image,
+                                size: 33,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          child: CheckboxListTile(
+                            value: public,
+                            onChanged: (value) {
+                              setState(() {
+                                value == false ? public = false : public = true;
+                              });
+                            },
+                            controlAffinity: ListTileControlAffinity.trailing,
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              authController.posting(
+                                // selectFile: selectFile!,
+                                title: title.text,
+                                desc: desc.text,
+                                content: content.text,
+                                public: public,
+                                profileId: int.parse(id),
+                              );
+                            });
+                          },
                           child: CircleAvatar(
                             maxRadius: 40,
                             backgroundColor: FourtyColor,
+                            child: Icon(
+                              Icons.arrow_right_alt,
+                              color: lightColor,
+                            ),
                           ),
                         )
                       ],
@@ -147,7 +198,7 @@ class _PostsScreenState extends State<PostsScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 70,
+                  height: 40,
                 ),
                 FutureBuilder<List<PostsNoAuth>>(
                   future: RemoteAuthService().getPostsNoAuth(),

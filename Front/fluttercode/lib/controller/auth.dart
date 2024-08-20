@@ -70,12 +70,12 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           var email = jsonDecode(userResult.body)['email'];
           var lname = jsonDecode(userResult.body)['lname'];
+          var fname = jsonDecode(userResult.body)['fname'];
           var id = jsonDecode(userResult.body)['id'];
-
           user.value = userFromJson(userResult.body);
           await LocalAuthService().storeToken(token);
           await LocalAuthService()
-              .storeAccount(email: email, lname: lname, id: id);
+              .storeAccount(email: email, lname: lname, id: id, fname: fname);
           EasyLoading.showSuccess("Bem vindo ao Bloguee");
           Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
         } else {
@@ -93,16 +93,16 @@ class AuthController extends GetxController {
     }
   }
 
-  void posting(
-      {required String title,
-      required String desc,
-      required String content,
-      required int profileId,
-      // required int chunkId,
-      required bool fixed,
-      String? fileName,
-      // List<int>? selectFile
-      }) async {
+  void posting({
+    required String title,
+    required String desc,
+    required String content,
+    required int profileId,
+    required bool public,
+    // required int chunkId,
+    String? fileName,
+    // List<int>? selectFile
+  }) async {
     try {
       EasyLoading.show(
         status: 'Loading...',
@@ -110,11 +110,13 @@ class AuthController extends GetxController {
       );
       var token = await LocalAuthService().getSecureToken("token");
       var result = await RemoteAuthService().addPost(
-          token: token.toString(),
-          title: title,
-          desc: desc,
-          content: content,
-          profileId: profileId,);
+        token: token.toString(),
+        title: title,
+        desc: desc,
+        content: content,
+        profileId: profileId,
+        public: public,
+      );
       EasyLoading.showSuccess("Seu relato poster enviado.");
       Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
 

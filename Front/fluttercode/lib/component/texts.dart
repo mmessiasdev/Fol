@@ -23,6 +23,7 @@ class PrimaryText extends StatelessWidget {
         style: GoogleFonts.montserrat(
           fontSize: 48,
           textStyle: TextStyle(
+              height: 1,
               color: color,
               decoration: TextDecoration.none,
               fontWeight: FontWeight.bold),
@@ -47,6 +48,7 @@ class SecundaryText extends StatelessWidget {
         style: GoogleFonts.montserrat(
           fontSize: 20,
           textStyle: TextStyle(
+            height: 1,
             fontWeight: FontWeight.w500,
             color: color,
             decoration: TextDecoration.none,
@@ -127,6 +129,7 @@ class SubText extends StatelessWidget {
           color: color == null ? nightColor : color,
           textStyle: TextStyle(
             color: nightColor,
+            height: 1,
             decoration: TextDecoration.none,
           ),
         ),
@@ -159,6 +162,7 @@ class SubTextSized extends StatelessWidget {
         style: GoogleFonts.montserrat(
           fontSize: size,
           textStyle: TextStyle(
+            height: 1,
             color: color == null ? nightColor : color,
             fontWeight: fontweight,
             decoration: tdeco == null ? TextDecoration.none : tdeco,
