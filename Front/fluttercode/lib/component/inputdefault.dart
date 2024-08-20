@@ -120,10 +120,7 @@ class _InputTextFieldState extends State<InputTextField> {
                 const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             hintStyle:
                 const TextStyle(fontWeight: FontWeight.w300, fontSize: 12),
-            border: const UnderlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              borderSide: BorderSide(width: 1, color: Colors.grey),
-            ),
+            border: const UnderlineInputBorder(),
             enabledBorder: const UnderlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               borderSide: BorderSide(width: 1, color: Colors.grey),

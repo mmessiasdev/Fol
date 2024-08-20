@@ -60,7 +60,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 InfoInputLogin(
                   title: 'Nome:',
-                  info: lname == null ? "" : lname,
+                  info: lname == null ? "" : lname, 
                 ),
                 InfoInputLogin(
                   title: 'Email:',

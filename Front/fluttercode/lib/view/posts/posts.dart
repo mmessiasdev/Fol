@@ -1,4 +1,5 @@
 import 'package:Bloguee/component/containersLoading.dart';
+import 'package:Bloguee/component/logincont.dart';
 import 'package:Bloguee/component/post.dart';
 import 'package:Bloguee/model/postsnauth.dart';
 import 'package:flutter/material.dart';
@@ -41,17 +42,7 @@ class _PostsScreenState extends State<PostsScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        MainHeader(
-          title: 'Criar',
-          onClick: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CreatePost(),
-              ),
-            );
-          },
-        ),
+        LoginContent(),
         Padding(
           padding: defaultPadding,
           child: Column(
