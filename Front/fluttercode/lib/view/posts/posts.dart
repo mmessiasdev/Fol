@@ -41,56 +41,98 @@ class _PostsScreenState extends State<PostsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        const LoginContent(),
-        SizedBox(height: 50,),
-        Padding(
-          padding: defaultPaddingHorizon,
-          child: Column(
-            children: [
-              FutureBuilder<List<PostsNoAuth>>(
-                future: RemoteAuthService().getPostsNoAuth(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return PostsLoading();
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: SubText(
-                        text: 'Erro ao pesquisar post',
-                        color: PrimaryColor,
-                        align: TextAlign.center,
-                      ),
-                    );
-                  } else if (snapshot.hasData) {
-                    var posts = snapshot.data!;
-                    return ListView.builder(
-                      itemCount: posts.length,
-                      scrollDirection: Axis.vertical,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        var render = posts[index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: WidgetPosts(
-                            plname: 'Fixado',
-                            title: render.title.toString(),
-                            desc: render.content.toString(),
-                            updatedAt: "teste",
-                            id: render.id.toString(),
-                          ),
-                        );
-                      },
-                    );
-                  }
-                  return SizedBox.shrink();
-                },
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
+    return token == null
+        ? Padding(
+            padding: defaultPaddingHorizon,
+            child: ListView(
+              children: [
+                const LoginContent(),
+                SizedBox(
+                  height: 50,
+                ),
+                FutureBuilder<List<PostsNoAuth>>(
+                  future: RemoteAuthService().getPostsNoAuth(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const PostsLoading();
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: ErrorPost(
+                          text:
+                              "Estamos passando por uma manutenção. Entre novamente mais tarde!",
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      var posts = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: posts.length,
+                        scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          var render = posts[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: WidgetPosts(
+                              plname: render.fname.toString(),
+                              title: render.title.toString(),
+                              desc: render.content.toString(),
+                              updatedAt: "teste",
+                              id: render.id.toString(),
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return SizedBox.shrink();
+                  },
+                ),
+              ],
+            ),
+          )
+        : Padding(
+            padding: defaultPaddingHorizon,
+            child: Column(
+              children: [
+                FutureBuilder<List<PostsNoAuth>>(
+                  future: RemoteAuthService().getPostsNoAuth(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const PostsLoading();
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: ErrorPost(
+                          text:
+                              "Estamos passando por uma manutenção. Entre novamente mais tarde!",
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      var posts = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: posts.length,
+                        scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          var render = posts[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: WidgetPosts(
+                              plname: render.fname.toString(),
+                              title: render.title.toString(),
+                              desc: render.content.toString(),
+                              updatedAt: "teste",
+                              id: render.id.toString(),
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return SizedBox.shrink();
+                  },
+                ),
+              ],
+            ),
+          );
   }
 }

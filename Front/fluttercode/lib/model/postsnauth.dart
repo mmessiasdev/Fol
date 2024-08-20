@@ -9,6 +9,7 @@ class PostsNoAuth {
   String? updatedAt;
   Null? media;
   List<Null>? likes;
+  String? fname;
 
   PostsNoAuth(
       {this.id,
@@ -20,10 +21,12 @@ class PostsNoAuth {
       this.createdAt,
       this.updatedAt,
       this.media,
+      this.fname,
       this.likes});
 
   PostsNoAuth.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    fname = json['profile']['fname'];
     title = json['title'];
     profile =
         json['profile'] != null ? new Profile.fromJson(json['profile']) : null;
