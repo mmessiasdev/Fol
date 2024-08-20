@@ -128,7 +128,6 @@ class RemoteAuthService {
       Uri.parse('$url/posts'),
     );
     var body = jsonDecode(response.body);
-    print(body);
     var itemCount = body;
     for (var i = 0; i < itemCount.length; i++) {
       listItens.add(PostsNoAuth.fromJson(itemCount[i]));
@@ -137,14 +136,12 @@ class RemoteAuthService {
   }
 
   Future<Map> getPost({
-    required String token,
     required String id,
   }) async {
     var response = await client.get(
       Uri.parse('$url/posts/$id'),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer $token",
         'ngrok-skip-browser-warning': "true"
       },
     );

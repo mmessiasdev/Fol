@@ -116,7 +116,7 @@ class _PostScreenState extends State<PostScreen> {
                   title: "Voltar", onClick: () => Navigator.pop(context)),
               FutureBuilder<Map>(
                   future: RemoteAuthService()
-                      .getPost(token: token, id: widget.id),
+                      .getPost(id: widget.id),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       var render = snapshot.data!;
@@ -151,7 +151,7 @@ class _PostScreenState extends State<PostScreen> {
                                     height: 50,
                                   ),
                                   SubText(
-                                      text: render["desc"],
+                                      text: render["content"],
                                       color: SecudaryColor,
                                       align: TextAlign.justify),
                                   SizedBox(

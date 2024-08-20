@@ -198,13 +198,6 @@ class _CreatePostState extends State<CreatePost> {
                       color: FourtyColor,
                       onClick: () {
                         setState(() {
-                          print(title.text);
-                          print(desc.text);
-                          print(content.text);
-                          print(chunk);
-                          print(id);
-                          print(selectFile);
-                          print(fixed);
                           authController.posting(
                             fileName: selectedFileName,
                             fixed: fixed,
@@ -212,7 +205,6 @@ class _CreatePostState extends State<CreatePost> {
                             title: title.text,
                             desc: desc.text,
                             content: content.text,
-                            chunkId: int.parse(chunk),
                             profileId: int.parse(id),
                           );
                         });

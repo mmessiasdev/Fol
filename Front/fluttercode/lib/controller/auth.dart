@@ -98,7 +98,7 @@ class AuthController extends GetxController {
       required String desc,
       required String content,
       required int profileId,
-      required int chunkId,
+      // required int chunkId,
       required bool fixed,
       String? fileName,
       // List<int>? selectFile

@@ -39,7 +39,6 @@ class _PostsScreenState extends State<PostsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(RemoteAuthService().getPostsNoAuth());
     return ListView(
       children: [
         MainHeader(
@@ -89,20 +88,16 @@ class _PostsScreenState extends State<PostsScreen> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         var render = posts[index];
-                        if (render.public == true) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: WidgetPosts(
-                              plname: 'Fixado',
-                              title: render.title.toString(),
-                              desc: render.content.toString(),
-                              updatedAt: "teste",
-                              id: render.id.toString(),
-                            ),
-                          );
-                        } else {
-                          return SizedBox();
-                        }
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: WidgetPosts(
+                            plname: 'Fixado',
+                            title: render.title.toString(),
+                            desc: render.content.toString(),
+                            updatedAt: "teste",
+                            id: render.id.toString(),
+                          ),
+                        );
                       },
                     );
                   }
