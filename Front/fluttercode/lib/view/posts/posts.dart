@@ -1,4 +1,5 @@
 import 'package:Bloguee/component/containersLoading.dart';
+import 'package:Bloguee/component/inputdefault.dart';
 import 'package:Bloguee/component/logincont.dart';
 import 'package:Bloguee/component/post.dart';
 import 'package:Bloguee/model/postsnauth.dart';
@@ -116,13 +117,11 @@ class _PostsScreenState extends State<PostsScreen> {
                 ),
                 Column(
                   children: [
-                    Container(
+                    InputTextField(
+                      title: "",
                       width: double.infinity,
-                      height: 208,
-                      decoration: BoxDecoration(
-                        color: PrimaryColor,
-                        borderRadius: BorderRadius.circular(23),
-                      ),
+                      fill: true,
+                      minLines: 7,
                     ),
                     SizedBox(
                       height: 20,
@@ -147,7 +146,9 @@ class _PostsScreenState extends State<PostsScreen> {
                     )
                   ],
                 ),
-                SizedBox(height: 70,),
+                SizedBox(
+                  height: 70,
+                ),
                 FutureBuilder<List<PostsNoAuth>>(
                   future: RemoteAuthService().getPostsNoAuth(),
                   builder: (context, snapshot) {

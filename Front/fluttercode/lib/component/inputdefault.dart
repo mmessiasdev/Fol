@@ -22,9 +22,13 @@ class InputTextField extends StatefulWidget {
   final Icon? icon;
   final int? minLines;
   final int? maxLines;
+  final Color? fcolor;
+  final bool? fill;
 
   const InputTextField(
       {Key? key,
+      this.fcolor,
+      this.fill,
       this.width,
       this.minLines,
       this.maxLines,
@@ -90,6 +94,8 @@ class _InputTextFieldState extends State<InputTextField> {
         textAlign: widget.textAlign,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
+          filled: widget.fill,
+          fillColor: PrimaryColor,
           icon: widget.icon,
           hintText: widget.hint,
           labelText: widget.title,
