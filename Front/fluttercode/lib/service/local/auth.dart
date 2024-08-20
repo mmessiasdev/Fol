@@ -15,12 +15,10 @@ class LocalAuthService {
     required String email,
     required String lname,
     required int id,
-    required int chunk,
   }) async {
     await _storage.write(key: "id", value: id.toString());
     await _storage.write(key: "email", value: email);
     await _storage.write(key: "lname", value: lname);
-    await _storage.write(key: "chunkId", value: chunk.toString());
   }
 
   Future<String?> getEmail(String unicKey) async {
@@ -29,10 +27,6 @@ class LocalAuthService {
 
   Future<String?> getId(String unicKey) async {
     return await _storage.read(key: "id");
-  }
-
-  Future<String?> getChunkId(String unicKey) async {
-    return await _storage.read(key: "chunkId");
   }
 
   Future<String?> getLname(String unicKey) async {

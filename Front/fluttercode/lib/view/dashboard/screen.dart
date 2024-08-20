@@ -26,11 +26,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   void getString() async {
     var strToken = await LocalAuthService().getSecureToken("token");
-    var strChunkId = await LocalAuthService().getChunkId("chunk");
 
     setState(() {
       token = strToken.toString();
-      chunkId = strChunkId.toString();
     });
   }
 

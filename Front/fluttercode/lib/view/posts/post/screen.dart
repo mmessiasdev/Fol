@@ -40,11 +40,9 @@ class _PostScreenState extends State<PostScreen> {
 
   void getString() async {
     var strToken = await LocalAuthService().getSecureToken("token");
-    var strChunkId = await LocalAuthService().getChunkId("chunk");
 
     setState(() {
       token = strToken.toString();
-      chunkId = strChunkId.toString();
     });
   }
 
@@ -118,7 +116,7 @@ class _PostScreenState extends State<PostScreen> {
                   title: "Voltar", onClick: () => Navigator.pop(context)),
               FutureBuilder<Map>(
                   future: RemoteAuthService()
-                      .getPost(token: token, id: widget.id, chunkId: chunkId),
+                      .getPost(token: token, id: widget.id),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       var render = snapshot.data!;

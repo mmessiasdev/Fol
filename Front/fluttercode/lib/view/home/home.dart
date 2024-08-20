@@ -33,14 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
     var strFull = await LocalAuthService().getLname("lname");
     var strId = await LocalAuthService().getId("id");
     var strToken = await LocalAuthService().getSecureToken("token");
-    var strChunkId = await LocalAuthService().getChunkId("chunkId");
 
     setState(() {
       email = strEmail.toString();
       lname = strFull.toString();
       id = strId.toString();
       token = strToken.toString();
-      chunkId = strChunkId.toString();
     });
   }
 

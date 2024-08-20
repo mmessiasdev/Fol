@@ -32,11 +32,9 @@ class _PostsScreenState extends State<PostsScreen> {
 
   void getString() async {
     var strToken = await LocalAuthService().getSecureToken("token");
-    var strChunkId = await LocalAuthService().getChunkId("chunkId");
 
     setState(() {
       token = strToken;
-      chunkId = strChunkId;
     });
   }
 

@@ -71,12 +71,11 @@ class AuthController extends GetxController {
           var email = jsonDecode(userResult.body)['email'];
           var lname = jsonDecode(userResult.body)['lname'];
           var id = jsonDecode(userResult.body)['id'];
-          var chunk = jsonDecode(userResult.body)['chunk']['id'];
 
           user.value = userFromJson(userResult.body);
           await LocalAuthService().storeToken(token);
           await LocalAuthService()
-              .storeAccount(email: email, lname: lname, id: id, chunk: chunk);
+              .storeAccount(email: email, lname: lname, id: id);
           EasyLoading.showSuccess("Bem vindo ao Bloguee");
           Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
         } else {
@@ -110,13 +109,11 @@ class AuthController extends GetxController {
       );
       var token = await LocalAuthService().getSecureToken("token");
       var result = await RemoteAuthService().addPost(
-          fixedChunk: fixed,
           token: token.toString(),
           title: title,
           desc: desc,
           content: content,
-          profileId: profileId,
-          chunkId: chunkId);
+          profileId: profileId,);
       EasyLoading.showSuccess("Seu relato poster enviado.");
       Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
 

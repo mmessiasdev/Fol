@@ -81,38 +81,34 @@ class RemoteAuthService {
     return response;
   }
 
-  Future<Map> chunk({
-    required String? chunkId,
-    required String? token,
-  }) async {
-    var response = await client.get(
-      Uri.parse('$url/chunks/$chunkId'),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token",
-        'ngrok-skip-browser-warning': "true"
-      },
-    );
-    var itens = json.decode(response.body);
-    return itens;
-  }
+  // Future<Map> chunk({
+  //   required String? chunkId,
+  //   required String? token,
+  // }) async {
+  //   var response = await client.get(
+  //     Uri.parse('$url/chunks/$chunkId'),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": "Bearer $token",
+  //       'ngrok-skip-browser-warning': "true"
+  //     },
+  //   );
+  //   var itens = json.decode(response.body);
+  //   return itens;
+  // }
 
   Future addPost({
     required String? title,
     required String? desc,
     required String? content,
     required int? profileId,
-    required int? chunkId,
     required String? token,
-    required bool? fixedChunk,
   }) async {
     final body = {
       "title": title.toString(),
       "desc": desc.toString(),
       "content": content.toString(),
       "profile": profileId.toString(),
-      "chunk": chunkId.toString(),
-      "chunkfixed": fixedChunk.toString()
     };
     var response = await client.post(
       Uri.parse('$url/posts'),
@@ -139,12 +135,12 @@ class RemoteAuthService {
     return listItens;
   }
 
-  Future<Map> getPost(
-      {required String token,
-      required String id,
-      required String? chunkId}) async {
+  Future<Map> getPost({
+    required String token,
+    required String id,
+  }) async {
     var response = await client.get(
-      Uri.parse('$url/posts/$id?chunk.id_eq=$chunkId'),
+      Uri.parse('$url/posts/$id'),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token",
@@ -195,11 +191,10 @@ class RemoteAuthService {
   //   return listItens;
   // }
 
-  Future<List<ProfilesModel>> getProfiles(
-      {required String? token, required String? chunkId}) async {
+  Future<List<ProfilesModel>> getProfiles({required String? token}) async {
     List<ProfilesModel> listItens = [];
     var response = await client.get(
-      Uri.parse('$url/profiles?chunk.id_eq=$chunkId'),
+      Uri.parse('$url/profiles'),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token",
