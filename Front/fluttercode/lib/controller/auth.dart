@@ -101,7 +101,8 @@ class AuthController extends GetxController {
       required int chunkId,
       required bool fixed,
       String? fileName,
-      List<int>? selectFile}) async {
+      // List<int>? selectFile
+      }) async {
     try {
       EasyLoading.show(
         status: 'Loading...',
@@ -117,33 +118,33 @@ class AuthController extends GetxController {
       EasyLoading.showSuccess("Seu relato poster enviado.");
       Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
 
-      if (result.statusCode == 200) {
-        int postId = json.decode(result.body)['id'];
-        var url = Uri.parse('$urlEnv/upload');
-        var request = http.MultipartRequest("POST", url);
-        request.files.add(await http.MultipartFile.fromBytes(
-          'files',
-          selectFile!,
-          contentType: MediaType('application', 'pdf'),
-          filename: fileName ?? "Bloguee File",
-        ));
+      // if (result.statusCode == 200) {
+      //   int postId = json.decode(result.body)['id'];
+      //   var url = Uri.parse('$urlEnv/upload');
+      //   var request = http.MultipartRequest("POST", url);
+      //   request.files.add(await http.MultipartFile.fromBytes(
+      //     'files',
+      //     selectFile!,
+      //     contentType: MediaType('application', 'pdf'),
+      //     filename: fileName ?? "Bloguee File",
+      //   ));
 
-        request.files.add(await http.MultipartFile.fromString("ref", "post"));
-        request.files
-            .add(await http.MultipartFile.fromString("refId", "${postId}"));
+      //   request.files.add(await http.MultipartFile.fromString("ref", "post"));
+      //   request.files
+      //       .add(await http.MultipartFile.fromString("refId", "${postId}"));
 
-        request.files
-            .add(await http.MultipartFile.fromString("field", "files"));
+      //   request.files
+      //       .add(await http.MultipartFile.fromString("field", "files"));
 
-        request.headers.addAll({"Authorization": "Bearer $token"});
-        request.send().then((response) {
-          if (response.statusCode == 200) {
-            print("FileUpload Successfuly");
-          } else {
-            print("FileUpload Error");
-          }
-        });
-      }
+      //   request.headers.addAll({"Authorization": "Bearer $token"});
+      //   request.send().then((response) {
+      //     if (response.statusCode == 200) {
+      //       print("FileUpload Successfuly");
+      //     } else {
+      //       print("FileUpload Error");
+      //     }
+      //   });
+      // }
     } catch (e) {
       print(e);
       EasyLoading.showError('Alguma coisa deu errado.');

@@ -2,7 +2,7 @@ class PostsNoAuth {
   int? id;
   String? title;
   Profile? profile;
-  Null? public;
+  bool? public;
   String? content;
   String? publishedAt;
   String? createdAt;

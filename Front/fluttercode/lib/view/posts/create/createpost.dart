@@ -208,7 +208,7 @@ class _CreatePostState extends State<CreatePost> {
                           authController.posting(
                             fileName: selectedFileName,
                             fixed: fixed,
-                            selectFile: selectFile!,
+                            // selectFile: selectFile!,
                             title: title.text,
                             desc: desc.text,
                             content: content.text,
