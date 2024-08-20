@@ -112,7 +112,7 @@ class SubText extends StatelessWidget {
         text,
         textAlign: align,
         style: GoogleFonts.montserrat(
-          fontSize: 20,
+          fontSize: 16,
           textStyle: TextStyle(
             color: color,
             decoration: TextDecoration.none,

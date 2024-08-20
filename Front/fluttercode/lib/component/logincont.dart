@@ -55,85 +55,60 @@ class _LoginContentState extends State<LoginContent> {
                       'Compartilhe seus momentos com seus amigos ou com você mesmo.',
                   color: nightColor,
                   align: TextAlign.start),
+              const SizedBox(height: 40),
               Form(
                 key: _formKey,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 50),
-                        child: InputTextField(
-                          title: 'Email',
-                          textEditingController: emailController,
-                          validation: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Esse campo não pode ficar vazio.";
-                            } else if (!value.isValidEmail) {
-                              return "Insira um email válido.";
-                            }
-                            return null;
-                          },
+                child: Column(
+                  children: [
+                    InputTextField(
+                      title: 'Email',
+                      textEditingController: emailController,
+                      validation: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Esse campo não pode ficar vazio.";
+                        } else if (!value.isValidEmail) {
+                          return "Insira um email válido.";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    InputTextField(
+                      title: 'Password',
+                      obsecureText: true,
+                      maxLines: 1,
+                      // icon: Icon(Icons.lock),
+                      textEditingController: passwordController,
+                      validation: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Esse campo não pode ficar vazio.";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 40),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          child: SubText(
+                              text: "Não tem login? Crie uma conta.",
+                              color: nightColor,
+                              align: TextAlign.start),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: InputTextField(
-                          title: 'Password',
-                          obsecureText: true,
-                          maxLines: 1,
-                          // icon: Icon(Icons.lock),
-                          textEditingController: passwordController,
-                          validation: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Esse campo não pode ficar vazio.";
-                            }
-                            return null;
-                          },
+                        SizedBox(
+                          width: 20,
                         ),
-                      ),
-                      const SizedBox(height: 40),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30),
-                        child: InputTextButton(
-                          title: "Login",
-                          onClick: () {
-                            if (_formKey.currentState!.validate()) {
-                              authController.signIn(
-                                  email: emailController.text,
-                                  password: passwordController.text);
-                            }
-                          },
+                        CircleAvatar(
+                          maxRadius: 40,
+                          backgroundColor: FourtyColor,
+                          child: GestureDetector(
+                            onTap: () {},
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(top: 30),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       const Text("É um novo usário? "),
-                      //       InkWell(
-                      //           onTap: () {
-                      //             Navigator.pushReplacement(
-                      //                 context,
-                      //                 MaterialPageRoute(
-                      //                     builder: (context) =>
-                      //                         const SignUpScreen()));
-                      //           },
-                      //           child: const Text(
-                      //             "Crie uma conta.",
-                      //             style: TextStyle(
-                      //               color: Color.fromRGBO(19, 68, 90, 1),
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 10)
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],

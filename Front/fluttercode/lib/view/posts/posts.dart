@@ -2,6 +2,7 @@ import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/logincont.dart';
 import 'package:Bloguee/component/post.dart';
 import 'package:Bloguee/model/postsnauth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/header.dart';
@@ -42,12 +43,11 @@ class _PostsScreenState extends State<PostsScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        LoginContent(),
+        const LoginContent(),
         Padding(
-          padding: defaultPadding,
+          padding: defaultPaddingHorizon,
           child: Column(
             children: [
-              SizedBox(height: 50),
               SizedBox(
                 width: double.infinity,
                 child: PrimaryText(
