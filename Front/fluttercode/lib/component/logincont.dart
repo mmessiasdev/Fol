@@ -103,7 +103,13 @@ class _LoginContentState extends State<LoginContent> {
                           maxRadius: 40,
                           backgroundColor: FourtyColor,
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                authController.signIn(
+                                    email: emailController.text,
+                                    password: passwordController.text);
+                              }
+                            },
                           ),
                         ),
                       ],

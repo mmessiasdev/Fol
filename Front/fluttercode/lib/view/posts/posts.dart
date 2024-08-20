@@ -44,18 +44,11 @@ class _PostsScreenState extends State<PostsScreen> {
     return ListView(
       children: [
         const LoginContent(),
+        SizedBox(height: 50,),
         Padding(
           padding: defaultPaddingHorizon,
           child: Column(
             children: [
-              SizedBox(
-                width: double.infinity,
-                child: PrimaryText(
-                  text: 'Últimos Posts',
-                  color: nightColor,
-                  align: TextAlign.start,
-                ),
-              ),
               SizedBox(height: 40),
               FutureBuilder<List<PostsNoAuth>>(
                 future: RemoteAuthService().getPostsNoAuth(),
