@@ -10,7 +10,7 @@ import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/service/local/auth.dart';
 import 'package:http/http.dart' as http;
-import 'dart:html' as html;
+// import 'dart:html' as html;
 
 class CreatePost extends StatefulWidget {
   const CreatePost({super.key});
@@ -63,31 +63,31 @@ class _CreatePostState extends State<CreatePost> {
 
   String? selectedFileName;
 
-  startPicker() async {
-    html.FileUploadInputElement uploadInput = html.FileUploadInputElement();
-    uploadInput.multiple = true;
-    uploadInput.draggable = true;
-    uploadInput.click();
+  // startPicker() async {
+  //   html.FileUploadInputElement uploadInput = html.FileUploadInputElement();
+  //   uploadInput.multiple = true;
+  //   uploadInput.draggable = true;
+  //   uploadInput.click();
 
-    uploadInput.onChange.listen((event) {
-      final files = uploadInput.files;
-      final file = files![0];
-      final reader = html.FileReader();
+  //   uploadInput.onChange.listen((event) {
+  //     final files = uploadInput.files;
+  //     final file = files![0];
+  //     final reader = html.FileReader();
 
-      setState(() {
-        selectedFileName = file.name;
-      });
+  //     setState(() {
+  //       selectedFileName = file.name;
+  //     });
 
-      reader.onLoadEnd.listen((event) {
-        setState(() {
-          _bytesData =
-              Base64Decoder().convert(reader.result.toString().split(",").last);
-          selectFile = _bytesData;
-        });
-      });
-      reader.readAsDataUrl(file);
-    });
-  }
+  //     reader.onLoadEnd.listen((event) {
+  //       setState(() {
+  //         _bytesData =
+  //             Base64Decoder().convert(reader.result.toString().split(",").last);
+  //         selectFile = _bytesData;
+  //       });
+  //     });
+  //     reader.readAsDataUrl(file);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -133,17 +133,17 @@ class _CreatePostState extends State<CreatePost> {
                     textEditingController: content,
                   ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: InputOutlineButton(
-                        title: 'Add PDF',
-                        onClick: () {
-                          startPicker();
-                        },
-                      ),
-                    )),
+                // Padding(
+                //     padding: const EdgeInsets.only(top: 50),
+                //     child: SizedBox(
+                //       width: double.infinity,
+                //       child: InputOutlineButton(
+                //         title: 'Add PDF',
+                //         onClick: () {
+                //           startPicker();
+                //         },
+                //       ),
+                //     )),
                 SizedBox(
                   height: 10,
                 ),

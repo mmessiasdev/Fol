@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:Bloguee/model/postnauth.dart';
+import 'package:Bloguee/model/postsnauth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:Bloguee/model/postFiles.dart';
@@ -126,15 +126,15 @@ class RemoteAuthService {
     return response;
   }
 
-  Future<List<PostNotAuthenticated>> getPostsNoAuth() async {
-    List<PostNotAuthenticated> listItens = [];
+  Future<List<PostsNoAuth>> getPostsNoAuth() async {
+    List<PostsNoAuth> listItens = [];
     var response = await client.get(
       Uri.parse('$url/posts'),
     );
     var body = jsonDecode(response.body);
     var itemCount = body;
     for (var i = 0; i < itemCount.length; i++) {
-      listItens.add(PostNotAuthenticated.fromJson(itemCount[i]));
+      listItens.add(PostsNoAuth.fromJson(itemCount[i]));
     }
     return listItens;
   }

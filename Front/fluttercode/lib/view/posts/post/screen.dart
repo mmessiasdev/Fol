@@ -9,12 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/header.dart';
 import 'package:Bloguee/component/texts.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'dart:io';
 import 'dart:typed_data';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:html' as html;
+// import 'dart:html' as html;
 import 'package:universal_platform/universal_platform.dart';
 
 class PostScreen extends StatefulWidget {
@@ -70,46 +67,46 @@ class _PostScreenState extends State<PostScreen> {
     }
   }
 
-  Future<void> downloadPDFMobile() async {
-    try {
-      Uint8List bytesConverted = await convertURL(fileBytes);
+  // Future<void> downloadPDFMobile() async {
+  //   try {
+  //     Uint8List bytesConverted = await convertURL(fileBytes);
 
-      // Salvar o arquivo temporariamente
-      final tempDir = await getTemporaryDirectory();
-      final tempPath = '${tempDir.path}/${fileName}';
-      File tempFile = File(tempPath);
-      await tempFile.writeAsBytes(bytesConverted);
+  //     // Salvar o arquivo temporariamente
+  //     final tempDir = await getTemporaryDirectory();
+  //     final tempPath = '${tempDir.path}/${fileName}';
+  //     File tempFile = File(tempPath);
+  //     await tempFile.writeAsBytes(bytesConverted);
 
-      // Abrir o PDF no navegador
-      await launch(tempPath);
-    } catch (e) {
-      print('Erro: $e');
-      // Lide com o erro conforme necessário
-    }
-  }
+  //     // Abrir o PDF no navegador
+  //     await launch(tempPath);
+  //   } catch (e) {
+  //     print('Erro: $e');
+  //     // Lide com o erro conforme necessário
+  //   }
+  // }
 
-  Future<void> downloadPDFWeb() async {
-    final response = await http.get(Uri.parse(fileBytes));
+  // Future<void> downloadPDFWeb() async {
+  //   final response = await http.get(Uri.parse(fileBytes));
 
-    if (response.statusCode == 200) {
-      final Uint8List bytes = response.bodyBytes;
+  //   if (response.statusCode == 200) {
+  //     final Uint8List bytes = response.bodyBytes;
 
-      final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      final anchor = html.AnchorElement(href: url)
-        ..target = 'webbrowser'
-        ..download = '${fileName}';
+  //     final blob = html.Blob([bytes]);
+  //     final url = html.Url.createObjectUrlFromBlob(blob);
+  //     final anchor = html.AnchorElement(href: url)
+  //       ..target = 'webbrowser'
+  //       ..download = '${fileName}';
 
-      html.document.body!.children.add(anchor);
-      anchor.click();
-      html.document.body!.children.remove(anchor);
-      html.Url.revokeObjectUrl(url);
+  //     html.document.body!.children.add(anchor);
+  //     anchor.click();
+  //     html.document.body!.children.remove(anchor);
+  //     html.Url.revokeObjectUrl(url);
 
-      print("PDF baixado com sucesso.");
-    } else {
-      throw Exception("Falha ao baixar o PDF: ${response.statusCode}");
-    }
-  }
+  //     print("PDF baixado com sucesso.");
+  //   } else {
+  //     throw Exception("Falha ao baixar o PDF: ${response.statusCode}");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -182,64 +179,64 @@ class _PostScreenState extends State<PostScreen> {
                                           color: nightColor,
                                         )),
                                   ),
-                            Padding(
-                              padding: defaultPadding,
-                              child: FutureBuilder<List<PostFiles>>(
-                                  future: RemoteAuthService().getPostsFiles(
-                                      token: token, id: widget.id),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      return Column(
-                                        children: [
-                                          ListView.builder(
-                                              shrinkWrap: true,
-                                              itemCount: snapshot.data!.length,
-                                              itemBuilder: (context, index) {
-                                                var renderFile =
-                                                    snapshot.data![index];
-                                                fileBytes = renderFile.url;
-                                                fileName = renderFile.name;
-                                                return Column(
-                                                  children: [
-                                                    Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(15),
-                                                        child:
-                                                            SfPdfViewer.network(
-                                                          renderFile.url
-                                                              .toString(),
-                                                        )),
-                                                    UniversalPlatform.isWeb
-                                                        ? Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    top: 50),
-                                                            child: SizedBox(
-                                                              width: double
-                                                                  .infinity,
-                                                              child:
-                                                                  InputOutlineButton(
-                                                                title:
-                                                                    'Baixar Documento \n ${renderFile.name}',
-                                                                onClick: () {
-                                                                  downloadPDFWeb();
-                                                                },
-                                                              ),
-                                                            ))
-                                                        : SizedBox()
-                                                  ],
-                                                );
-                                              }),
-                                        ],
-                                      );
-                                    } else if (snapshot.hasError) {
-                                      return SizedBox();
-                                    }
-                                    return SizedBox();
-                                  }),
-                            ),
+                            // Padding(
+                            //   padding: defaultPadding,
+                            //   child: FutureBuilder<List<PostFiles>>(
+                            //       future: RemoteAuthService().getPostsFiles(
+                            //           token: token, id: widget.id),
+                            //       builder: (context, snapshot) {
+                            //         if (snapshot.hasData) {
+                            //           return Column(
+                            //             children: [
+                            //               ListView.builder(
+                            //                   shrinkWrap: true,
+                            //                   itemCount: snapshot.data!.length,
+                            //                   itemBuilder: (context, index) {
+                            //                     var renderFile =
+                            //                         snapshot.data![index];
+                            //                     fileBytes = renderFile.url;
+                            //                     fileName = renderFile.name;
+                            //                     return Column(
+                            //                       children: [
+                            //                         Padding(
+                            //                             padding:
+                            //                                 const EdgeInsets
+                            //                                     .all(15),
+                            //                             child:
+                            //                                 SfPdfViewer.network(
+                            //                               renderFile.url
+                            //                                   .toString(),
+                            //                             )),
+                            //                         UniversalPlatform.isWeb
+                            //                             ? Padding(
+                            //                                 padding:
+                            //                                     const EdgeInsets
+                            //                                         .only(
+                            //                                         top: 50),
+                            //                                 child: SizedBox(
+                            //                                   width: double
+                            //                                       .infinity,
+                            //                                   child:
+                            //                                       InputOutlineButton(
+                            //                                     title:
+                            //                                         'Baixar Documento \n ${renderFile.name}',
+                            //                                     onClick: () {
+                            //                                       downloadPDFWeb();
+                            //                                     },
+                            //                                   ),
+                            //                                 ))
+                            //                             : SizedBox()
+                            //                       ],
+                            //                     );
+                            //                   }),
+                            //             ],
+                            //           );
+                            //         } else if (snapshot.hasError) {
+                            //           return SizedBox();
+                            //         }
+                            //         return SizedBox();
+                            //       }),
+                            // ),
                           ],
                         ),
                       );

@@ -20,7 +20,7 @@ class MainHeader extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset('images/preto.png'),
+            child: SizedBox(),
           ),
           GestureDetector(
               child: Container(

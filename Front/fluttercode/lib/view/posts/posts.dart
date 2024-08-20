@@ -1,6 +1,6 @@
 import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/post.dart';
-import 'package:Bloguee/model/postnauth.dart';
+import 'package:Bloguee/model/postsnauth.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/header.dart';
@@ -59,7 +59,7 @@ class _PostsScreenState extends State<PostsScreen> {
                   ),
                 ),
                 SizedBox(height: 40),
-                FutureBuilder<List<PostNotAuthenticated>>(
+                FutureBuilder<List<PostsNoAuth>>(
                   future: RemoteAuthService().getPostsNoAuth(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -138,7 +138,7 @@ class _PostsScreenState extends State<PostsScreen> {
                 ),
               ),
               SizedBox(height: 40),
-              FutureBuilder<List<PostNotAuthenticated>>(
+              FutureBuilder<List<PostsNoAuth>>(
                 future: RemoteAuthService().getPostsNoAuth(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
