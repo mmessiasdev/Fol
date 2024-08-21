@@ -4,15 +4,12 @@ import 'package:Bloguee/component/logincont.dart';
 import 'package:Bloguee/component/post.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/model/postsnauth.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/header.dart';
 import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/service/local/auth.dart';
 import 'package:Bloguee/service/remote/auth.dart';
-import 'package:Bloguee/view/posts/create/createpost.dart';
 import 'package:http/http.dart' as http;
 
 class PostsScreen extends StatefulWidget {
@@ -58,6 +55,12 @@ class _PostsScreenState extends State<PostsScreen> {
     title.dispose();
     desc.dispose();
     super.dispose();
+  }
+
+  void toggleIcon() {
+    setState(() {
+      public = !public; // Alterna entre os ícones
+    });
   }
 
   Widget ManutentionErro() {
@@ -160,15 +163,11 @@ class _PostsScreenState extends State<PostsScreen> {
                           ],
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: CheckboxListTile(
-                            value: public,
-                            onChanged: (value) {
-                              setState(() {
-                                value == false ? public = false : public = true;
-                              });
-                            },
-                            controlAffinity: ListTileControlAffinity.trailing,
+                          child: GestureDetector(
+                            child: Icon(
+                              public == false ? Icons.lock : Icons.lock_open,
+                            ),
+                            onTap: toggleIcon,
                           ),
                         ),
                         GestureDetector(
