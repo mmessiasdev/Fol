@@ -4,19 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DefaultTitle extends StatelessWidget {
-  DefaultTitle({super.key, this.title, this.subtitle, this.subbuttom});
+  DefaultTitle(
+      {super.key, this.title, this.subtitle, this.subbuttom, this.align});
 
   String? title;
   String? subtitle;
+  TextAlign? align;
+
   Widget? subbuttom;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            margin: const EdgeInsets.only(top: 25),
-            child: PrimaryText(text: title, color: nightColor)),
+        SizedBox(
+          width: double.infinity,
+          child: Container(
+              margin: const EdgeInsets.only(top: 25),
+              child: PrimaryText(
+                text: title,
+                color: nightColor,
+                align: align,
+              )),
+        ),
         const SizedBox(
           height: 15,
         ),

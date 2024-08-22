@@ -5,7 +5,7 @@ import 'package:Bloguee/view/posts/posts.dart';
 import 'package:get/get.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/controller/dashboard.dart';
-import 'package:Bloguee/view/home/home.dart';
+import 'package:Bloguee/view/home/mycontents.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 index: controller.tabIndex,
                 children: [
                   PostsScreen(),
-                  HomeScreen(),
+                  MyContents(),
                 ],
               ),
             ),
