@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/header.dart';
+import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/component/texts.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'dart:typed_data';

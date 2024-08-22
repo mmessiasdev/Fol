@@ -9,8 +9,8 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryText extends StatelessWidget {
-  PrimaryText({required this.text, required this.color, this.align});
-  String text;
+  PrimaryText({this.text, required this.color, this.align});
+  String? text;
   Color color;
   TextAlign? align;
 
@@ -18,8 +18,8 @@ class PrimaryText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Text(
-        text,
-        textAlign: align == null ? TextAlign.start : align,
+        text ?? "",
+        textAlign: align ?? TextAlign.start,
         style: GoogleFonts.montserrat(
           fontSize: 48,
           textStyle: TextStyle(
@@ -175,23 +175,19 @@ class SubTextSized extends StatelessWidget {
 
 class RichDefaultText extends StatelessWidget {
   RichDefaultText(
-      {required this.wid,
-      required this.text,
-      required this.align,
-      required this.size,
-      required this.fontweight});
+      {this.wid, this.text, this.align, this.size, this.fontweight});
 
-  Widget wid;
-  String text;
-  TextAlign align;
-  double size;
-  FontWeight fontweight;
+  Widget? wid;
+  String? text;
+  TextAlign? align;
+  double? size;
+  FontWeight? fontweight;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: text, // Texto antes do botão
+        text: text == null ? "" : text, // Texto antes do botão
         style: GoogleFonts.montserrat(
           fontSize: size,
           textStyle: TextStyle(
@@ -201,7 +197,9 @@ class RichDefaultText extends StatelessWidget {
           ),
         ),
         children: <InlineSpan>[
-          WidgetSpan(alignment: PlaceholderAlignment.middle, child: wid),
+          WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: wid ?? const SizedBox()),
         ],
       ),
     );

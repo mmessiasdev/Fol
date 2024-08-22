@@ -1,7 +1,8 @@
 import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/inputdefault.dart';
-import 'package:Bloguee/component/logincont.dart';
+import 'package:Bloguee/component/widgets/logincont.dart';
 import 'package:Bloguee/component/post.dart';
+import 'package:Bloguee/component/widgets/title.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/model/postsnauth.dart';
 import 'package:flutter/material.dart';
@@ -73,11 +74,11 @@ class _PostsScreenState extends State<PostsScreen> {
   Widget build(BuildContext context) {
     return token == null
         ? Padding(
-            padding: defaultPaddingHorizonTop,
+            padding: defaultPaddingHorizon,
             child: ListView(
               children: [
                 const LoginContent(),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 FutureBuilder<List<PostsNoAuth>>(
@@ -96,15 +97,12 @@ class _PostsScreenState extends State<PostsScreen> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           var render = posts[index];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: WidgetPosts(
-                              plname: render.fname.toString(),
-                              title: render.title.toString(),
-                              desc: render.content.toString(),
-                              updatedAt: "teste",
-                              id: render.id.toString(),
-                            ),
+                          return WidgetPosts(
+                            plname: render.fname.toString(),
+                            title: render.title.toString(),
+                            desc: render.content.toString(),
+                            updatedAt: "teste",
+                            id: render.id.toString(),
                           );
                         },
                       );
@@ -116,26 +114,19 @@ class _PostsScreenState extends State<PostsScreen> {
             ),
           )
         : Padding(
-            padding: defaultPaddingHorizonTop,
+            padding: defaultPaddingHorizon,
             child: ListView(
               children: [
-                PrimaryText(text: "Seja bem vindo, $fname!", color: nightColor),
-                SizedBox(
-                  height: 15,
-                ),
-                RichDefaultText(
-                    wid: SubTextSized(
-                      align: TextAlign.start,
-                      fontweight: FontWeight.w600,
-                      text: "com você mesmo.",
-                      size: 20,
-                    ),
-                    text: "Compartilhe seus momentos com seus amigos ou ",
+                DefaultTitle(
+                  title: "Seja bem vindo, $fname!",
+                  subtitle: "Compartilhe seus momentos com seus amigos ou ",
+                  subbuttom: SubTextSized(
                     align: TextAlign.start,
+                    fontweight: FontWeight.w600,
+                    text: "com você mesmo!",
                     size: 20,
-                    fontweight: FontWeight.w300),
-                SizedBox(
-                  height: 70,
+                    color: nightColor,
+                  ),
                 ),
                 Column(
                   children: [
@@ -143,7 +134,7 @@ class _PostsScreenState extends State<PostsScreen> {
                       title: "",
                       width: double.infinity,
                       fill: true,
-                      minLines: 6,
+                      minLines: 3,
                       textEditingController: content,
                     ),
                     SizedBox(
@@ -197,7 +188,7 @@ class _PostsScreenState extends State<PostsScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 FutureBuilder<List<PostsNoAuth>>(
                   future: RemoteAuthService().getPostsNoAuth(),

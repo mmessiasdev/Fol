@@ -4,6 +4,7 @@ import 'package:Bloguee/component/inputdefault.dart';
 import 'package:Bloguee/component/inputlight.dart';
 import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/texts.dart';
+import 'package:Bloguee/component/widgets/title.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/extention/string_extention.dart';
 import 'package:Bloguee/view/account/auth/signup.dart';
@@ -43,23 +44,17 @@ class _LoginContentState extends State<LoginContent> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PrimaryText(
-              text: 'Faça Login', color: nightColor, align: TextAlign.start),
-          SizedBox(
-            height: 15,
-          ),
-          RichDefaultText(
-              wid: SubTextSized(
-                align: TextAlign.start,
-                fontweight: FontWeight.w600,
-                text: "com você mesmo.",
-                size: 20,
-              ),
-              text: "Compartilhe seus momentos com seus amigos ou ",
+          DefaultTitle(
+            title: "Faça login!",
+            subtitle: "Compartilhe seus momentos com seus amigos ou ",
+            subbuttom: SubTextSized(
               align: TextAlign.start,
+              fontweight: FontWeight.w600,
+              text: "com você mesmo!",
               size: 20,
-              fontweight: FontWeight.w300),
-          const SizedBox(height: 40),
+              color: nightColor,
+            ),
+          ),
           Form(
             key: _formKey,
             child: Column(

@@ -1,7 +1,7 @@
 import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/service/local/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/header.dart';
+import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/controller/controllers.dart';
 
 import '../../component/buttomdefault.dart';

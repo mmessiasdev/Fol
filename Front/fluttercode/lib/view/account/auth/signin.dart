@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/header.dart';
+import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/extention/string_extention.dart';

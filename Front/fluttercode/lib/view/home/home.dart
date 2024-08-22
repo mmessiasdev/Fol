@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/header.dart';
+import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/service/local/auth.dart';
 import 'package:Bloguee/view/account/account.dart';
 import 'package:Bloguee/view/account/auth/signin.dart';
