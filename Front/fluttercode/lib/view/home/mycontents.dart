@@ -1,5 +1,10 @@
+import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/padding.dart';
+import 'package:Bloguee/component/post.dart';
 import 'package:Bloguee/component/widgets/title.dart';
+import 'package:Bloguee/model/postsnauth.dart';
+import 'package:Bloguee/model/profiles.dart';
+import 'package:Bloguee/service/remote/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/service/local/auth.dart';
@@ -20,7 +25,8 @@ class MyContents extends StatefulWidget {
 class _MyContentsState extends State<MyContents> {
   var email;
   var lname;
-  var id;
+  var fname;
+  var profileId;
   var token;
   var chunkId;
 
@@ -32,6 +38,7 @@ class _MyContentsState extends State<MyContents> {
 
   void getString() async {
     var strEmail = await LocalAuthService().getEmail("email");
+    var strFname = await LocalAuthService().getFname("fname");
     var strFull = await LocalAuthService().getLname("lname");
     var strId = await LocalAuthService().getId("id");
     var strToken = await LocalAuthService().getSecureToken("token");
@@ -39,9 +46,16 @@ class _MyContentsState extends State<MyContents> {
     setState(() {
       email = strEmail.toString();
       lname = strFull.toString();
-      id = strId.toString();
+      fname = strFname.toString();
+      profileId = strId.toString();
       token = strToken.toString();
     });
+  }
+
+  Widget ManutentionErro() {
+    return ErrorPost(
+      text: "Estamos passando por uma manutenção. Entre novamente mais tarde!",
+    );
   }
 
   @override
@@ -49,7 +63,7 @@ class _MyContentsState extends State<MyContents> {
     return SafeArea(
         child: Padding(
       padding: defaultPaddingHorizon,
-      child: Column(
+      child: ListView(
         children: [
           DefaultTitle(
             title: "Seu diário.",
@@ -61,6 +75,39 @@ class _MyContentsState extends State<MyContents> {
               size: 20,
               color: nightColor,
             ),
+          ),
+          FutureBuilder<List<Posts>>(
+            future: RemoteAuthService()
+                .getMyPosts(token: token, profileId: profileId),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const PostsLoading();
+              } else if (snapshot.hasError) {
+                return Center(child: ManutentionErro());
+              } else if (snapshot.hasData) {
+                var posts = snapshot.data!;
+                return ListView.builder(
+                  itemCount: posts.length,
+                  scrollDirection: Axis.vertical,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    var render = posts[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      child: WidgetPosts(
+                        plname: fname + " " + lname,
+                        title: render.title.toString(),
+                        desc: render.content.toString(),
+                        updatedAt: "teste",
+                        id: render.id.toString(),
+                      ),
+                    );
+                  },
+                );
+              }
+              return SizedBox.shrink();
+            },
           ),
           // MainHeader(
           //     title: lname == null ? "Login" : lname,

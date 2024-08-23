@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:Bloguee/model/postsnauth.dart';
+import 'package:Bloguee/model/profiles.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:Bloguee/model/postFiles.dart';
-import 'package:Bloguee/model/profiles.dart';
 import 'package:http/http.dart' as http;
 
 // const url = String.fromEnvironment('BASEURL', defaultValue: '');
@@ -190,8 +189,8 @@ class RemoteAuthService {
   //   return listItens;
   // }
 
-  Future<List<ProfilesModel>> getProfiles({required String? token}) async {
-    List<ProfilesModel> listItens = [];
+  Future<List<Profile>> getProfiles({required String? token}) async {
+    List<Profile> listItens = [];
     var response = await client.get(
       Uri.parse('$url/profiles'),
       headers: {
@@ -203,7 +202,27 @@ class RemoteAuthService {
     var body = jsonDecode(response.body);
     var itemCount = body;
     for (var i = 0; i < itemCount.length; i++) {
-      listItens.add(ProfilesModel.fromJson(itemCount[i]));
+      listItens.add(Profile.fromJson(itemCount[i]));
+    }
+    return listItens;
+  }
+
+  Future<List<Posts>> getMyPosts(
+      {required String? token, required String? profileId}) async {
+    List<Posts> listItens = [];
+    var response = await client.get(
+      Uri.parse('$url/profile/$profileId'),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $token",
+        'ngrok-skip-browser-warning': "true"
+      },
+    );
+    var body = jsonDecode(response.body);
+    var itemCount = body["posts"];
+    print(itemCount);
+    for (var i = 0; i < itemCount.length; i++) {
+      listItens.add(Posts.fromJson(itemCount[i]));
     }
     return listItens;
   }

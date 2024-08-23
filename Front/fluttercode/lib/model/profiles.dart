@@ -1,34 +1,34 @@
-class ProfilesModel{
+class Profile {
   int? id;
   String? fname;
   String? lname;
   String? email;
   User? user;
-  Chunk? chunk;
+  Null? post;
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
   List<Posts>? posts;
 
-  ProfilesModel(
+  Profile(
       {this.id,
       this.fname,
       this.lname,
       this.email,
       this.user,
-      this.chunk,
+      this.post,
       this.publishedAt,
       this.createdAt,
       this.updatedAt,
       this.posts});
 
-  ProfilesModel.fromJson(Map<String, dynamic> json) {
+  Profile.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     fname = json['fname'];
     lname = json['lname'];
     email = json['email'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    chunk = json['chunk'] != null ? new Chunk.fromJson(json['chunk']) : null;
+    post = json['post'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -49,9 +49,7 @@ class ProfilesModel{
     if (this.user != null) {
       data['user'] = this.user!.toJson();
     }
-    if (this.chunk != null) {
-      data['chunk'] = this.chunk!.toJson();
-    }
+    data['post'] = this.post;
     data['published_at'] = this.publishedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
@@ -70,7 +68,7 @@ class User {
   bool? confirmed;
   bool? blocked;
   int? role;
-  Null? profile;
+  int? profile;
   String? createdAt;
   String? updatedAt;
 
@@ -115,188 +113,51 @@ class User {
   }
 }
 
-class Chunk {
-  int? id;
-  String? title;
-  String? subtitle;
-  String? publishedAt;
-  String? createdAt;
-  String? updatedAt;
-
-  Chunk(
-      {this.id,
-      this.title,
-      this.subtitle,
-      this.publishedAt,
-      this.createdAt,
-      this.updatedAt});
-
-  Chunk.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    subtitle = json['subtitle'];
-    publishedAt = json['published_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['subtitle'] = this.subtitle;
-    data['published_at'] = this.publishedAt;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
-}
-
 class Posts {
   int? id;
   String? title;
-  String? desc;
-  String? content;
-  bool? chunkfixed;
-  int? chunk;
   int? profile;
-  int? category;
+  bool? public;
+  String? content;
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
-  List<Files>? files;
+  Null? media;
 
   Posts(
       {this.id,
       this.title,
-      this.desc,
-      this.content,
-      this.chunkfixed,
-      this.chunk,
       this.profile,
-      this.category,
+      this.public,
+      this.content,
       this.publishedAt,
       this.createdAt,
       this.updatedAt,
-      this.files});
+      this.media});
 
   Posts.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
-    desc = json['desc'];
-    content = json['content'];
-    chunkfixed = json['chunkfixed'];
-    chunk = json['chunk'];
     profile = json['profile'];
-    category = json['category'];
+    public = json['public'];
+    content = json['content'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    if (json['files'] != null) {
-      files = <Files>[];
-      json['files'].forEach((v) {
-        files!.add(new Files.fromJson(v));
-      });
-    }
+    media = json['media'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
-    data['desc'] = this.desc;
-    data['content'] = this.content;
-    data['chunkfixed'] = this.chunkfixed;
-    data['chunk'] = this.chunk;
     data['profile'] = this.profile;
-    data['category'] = this.category;
+    data['public'] = this.public;
+    data['content'] = this.content;
     data['published_at'] = this.publishedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    if (this.files != null) {
-      data['files'] = this.files!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Files {
-  int? id;
-  String? name;
-  String? alternativeText;
-  String? caption;
-  Null? width;
-  Null? height;
-  Null? formats;
-  String? hash;
-  String? ext;
-  String? mime;
-  double? size;
-  String? url;
-  Null? previewUrl;
-  String? provider;
-  Null? providerMetadata;
-  String? createdAt;
-  String? updatedAt;
-
-  Files(
-      {this.id,
-      this.name,
-      this.alternativeText,
-      this.caption,
-      this.width,
-      this.height,
-      this.formats,
-      this.hash,
-      this.ext,
-      this.mime,
-      this.size,
-      this.url,
-      this.previewUrl,
-      this.provider,
-      this.providerMetadata,
-      this.createdAt,
-      this.updatedAt});
-
-  Files.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    alternativeText = json['alternativeText'];
-    caption = json['caption'];
-    width = json['width'];
-    height = json['height'];
-    formats = json['formats'];
-    hash = json['hash'];
-    ext = json['ext'];
-    mime = json['mime'];
-    size = json['size'];
-    url = json['url'];
-    previewUrl = json['previewUrl'];
-    provider = json['provider'];
-    providerMetadata = json['provider_metadata'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['alternativeText'] = this.alternativeText;
-    data['caption'] = this.caption;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['formats'] = this.formats;
-    data['hash'] = this.hash;
-    data['ext'] = this.ext;
-    data['mime'] = this.mime;
-    data['size'] = this.size;
-    data['url'] = this.url;
-    data['previewUrl'] = this.previewUrl;
-    data['provider'] = this.provider;
-    data['provider_metadata'] = this.providerMetadata;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['media'] = this.media;
     return data;
   }
 }
