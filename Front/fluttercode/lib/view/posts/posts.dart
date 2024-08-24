@@ -107,7 +107,7 @@ class _PostsScreenState extends State<PostsScreen> {
                         },
                       );
                     }
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   },
                 ),
               ],
