@@ -57,6 +57,7 @@ class _AccountScreenState extends State<AccountScreen> {
         child: ListView(
           children: [
             DefaultTitle(
+              buttom: true,
               title: "Seu perfil.",
             ),
             Column(
