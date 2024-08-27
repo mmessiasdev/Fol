@@ -1,6 +1,7 @@
 import 'package:Bloguee/component/containersLoading.dart';
 import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/post.dart';
+import 'package:Bloguee/component/widgets/logincont.dart';
 import 'package:Bloguee/component/widgets/title.dart';
 import 'package:Bloguee/model/postsnauth.dart';
 import 'package:Bloguee/model/profiles.dart';
@@ -60,93 +61,104 @@ class _MyContentsState extends State<MyContents> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: lightColor,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          (Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AccountScreen(),
-            ),
-          ));
-        },
-        backgroundColor: FourtyColor,
-        splashColor: FourtyColor,
-        foregroundColor: FourtyColor,
-        focusColor: FourtyColor,
-        child: Icon(
-          Icons.person,
-          color: lightColor,
-        ),
-      ),
-      body: SafeArea(
-          child: Padding(
-        padding: defaultPaddingHorizon,
-        child: ListView(
-          children: [
-            DefaultTitle(
-              title: "Seu diário.",
-              align: TextAlign.start,
-              subtitle: "Aqui ficam localizada todas suas postagens ",
-              subbuttom: SubTextSized(
-                fontweight: FontWeight.w600,
-                text: "públicas ou não.",
-                size: 20,
-                color: nightColor,
+    return token != "null"
+        ? Scaffold(
+            backgroundColor: lightColor,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                (Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AccountScreen(),
+                  ),
+                ));
+              },
+              backgroundColor: FourtyColor,
+              splashColor: FourtyColor,
+              foregroundColor: FourtyColor,
+              focusColor: FourtyColor,
+              child: Icon(
+                Icons.person,
+                color: lightColor,
               ),
             ),
-            FutureBuilder<List<Posts>>(
-              future: RemoteAuthService()
-                  .getMyPosts(token: token, profileId: profileId),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const PostsLoading();
-                } else if (snapshot.hasError) {
-                  return Center(child: ManutentionErro());
-                } else if (snapshot.hasData) {
-                  var posts = snapshot.data!;
-                  return ListView.builder(
-                    itemCount: posts.length,
-                    scrollDirection: Axis.vertical,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      var render = posts[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: WidgetPosts(
-                          plname: fname + " " + lname,
-                          title: render.title.toString(),
-                          desc: render.content.toString(),
-                          updatedAt: "teste",
-                          id: render.id.toString(),
-                        ),
-                      );
+            body: SafeArea(
+                child: Padding(
+              padding: defaultPaddingHorizon,
+              child: ListView(
+                children: [
+                  DefaultTitle(
+                    title: "Seu diário.",
+                    align: TextAlign.start,
+                    subtitle: "Aqui ficam localizada todas suas postagens ",
+                    subbuttom: SubTextSized(
+                      fontweight: FontWeight.w600,
+                      text: "públicas ou não.",
+                      size: 20,
+                      color: nightColor,
+                    ),
+                  ),
+                  FutureBuilder<List<Posts>>(
+                    future: RemoteAuthService()
+                        .getMyPosts(token: token, profileId: profileId),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const PostsLoading();
+                      } else if (snapshot.hasError) {
+                        return Center(child: ManutentionErro());
+                      } else if (snapshot.hasData) {
+                        var posts = snapshot.data!;
+                        return ListView.builder(
+                          itemCount: posts.length,
+                          scrollDirection: Axis.vertical,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            var render = posts[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              child: WidgetPosts(
+                                plname: fname + " " + lname,
+                                title: render.title.toString(),
+                                desc: render.content.toString(),
+                                updatedAt: "teste",
+                                id: render.id.toString(),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                      return SizedBox.shrink();
                     },
-                  );
-                }
-                return SizedBox.shrink();
-              },
+                  ),
+                ],
+              ),
+            )),
+          )
+        : Padding(
+            padding: defaultPaddingHorizon,
+            child: ListView(
+              children: [
+                DefaultTitle(
+                  title: "Seu diário.",
+                  align: TextAlign.start,
+                  subtitle: "Aqui ficam localizada todas suas postagens ",
+                  subbuttom: SubTextSized(
+                    fontweight: FontWeight.w600,
+                    text: "públicas ou não.",
+                    size: 20,
+                    color: nightColor,
+                  ),
+                ),
+                PostsLoading(),
+                Padding(
+                  padding: defaultPaddingVertical,
+                  child: LoginContent(
+                    title: false,
+                  ),
+                ),
+              ],
             ),
-            // MainHeader(
-            //     title: lname == null ? "Login" : lname,
-            //     onClick: () => lname == "null"
-            //         ? (Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => SignInScreen(),
-            //             ),
-            //           ))
-            //         : (Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => AccountScreen(),
-            //             ),
-            //           ))),
-          ],
-        ),
-      )),
-    );
+          );
   }
 }

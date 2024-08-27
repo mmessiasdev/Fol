@@ -1,10 +1,13 @@
+import 'package:Bloguee/component/defaultButton.dart';
+import 'package:Bloguee/view/dashboard/screen.dart';
+import 'package:Bloguee/view/posts/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/extention/string_extention.dart';
-import 'package:Bloguee/component/buttomdefault.dart';
+import 'package:Bloguee/component/defaultTitleButtom.dart';
 import 'package:Bloguee/component/inputdefault.dart';
 
 import 'signup.dart';
@@ -37,9 +40,17 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: lightColor,
       body: ListView(
         children: [
-          MainHeader(title: "Voltar", onClick: () => (Navigator.pop(context))),
+          MainHeader(
+              title: "Voltar",
+              onClick: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashboardScreen(),
+                    ),
+                  )),
           Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, top: 75),
             child: SizedBox(
@@ -92,8 +103,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(height: 40),
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
-                        child: InputTextButton(
-                          title: "Login",
+                        child: Defaultbutton(
+                          iconColor: lightColor,
+                          color: FourtyColor,
                           onClick: () {
                             if (_formKey.currentState!.validate()) {
                               authController.signIn(
@@ -104,30 +116,32 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(top: 30),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       const Text("É um novo usário? "),
-                      //       InkWell(
-                      //           onTap: () {
-                      //             Navigator.pushReplacement(
-                      //                 context,
-                      //                 MaterialPageRoute(
-                      //                     builder: (context) =>
-                      //                         const SignUpScreen()));
-                      //           },
-                      //           child: const Text(
-                      //             "Crie uma conta.",
-                      //             style: TextStyle(
-                      //               color: Color.fromRGBO(19, 68, 90, 1),
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 10)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("É um novo usário? "),
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignUpScreen(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  "Crie uma conta.",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(19, 68, 90, 1),
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10)
                     ],
                   ),
                 ),

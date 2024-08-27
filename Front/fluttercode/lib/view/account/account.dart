@@ -1,10 +1,14 @@
+import 'package:Bloguee/component/defaultButton.dart';
+import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/texts.dart';
+import 'package:Bloguee/component/widgets/infotext.dart';
+import 'package:Bloguee/component/widgets/title.dart';
 import 'package:Bloguee/service/local/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/widgets/header.dart';
 import 'package:Bloguee/controller/controllers.dart';
 
-import '../../component/buttomdefault.dart';
+import '../../component/defaultTitleButtom.dart';
 import '../../component/colors.dart';
 import '../../component/infoinputlogin.dart';
 import 'auth/signin.dart';
@@ -44,38 +48,29 @@ class _AccountScreenState extends State<AccountScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: ListView(
-        children: [
-          MainHeader(title: "Voltar", onClick: () => Navigator.pop(context)),
-          const SizedBox(height: 50),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: Column(
+    print(token);
+
+    return Container(
+      color: lightColor,
+      child: Padding(
+        padding: defaultPaddingHorizon,
+        child: ListView(
+          children: [
+            DefaultTitle(
+              title: "Seu perfil.",
+            ),
+            Column(
               children: [
-                PrimaryText(
-                    text: 'Perfil', color: nightColor, align: TextAlign.center),
+                InfoText(title: "Nome:", stitle: lname == "null" ? "" : lname),
                 SizedBox(
-                  height: 30,
+                  height: 35,
                 ),
-                InfoInputLogin(
-                  title: 'Nome:',
-                  info: lname == null ? "" : lname, 
-                ),
-                InfoInputLogin(
-                  title: 'Email:',
-                  info: email == null ? "" : email,
-                ),
-                InfoInputLogin(
-                  title: 'id:',
-                  info: id == null ? "" : id,
-                ),
+                InfoText(title: "Email:", stitle: email == "null" ? "" : email),
                 SizedBox(
-                  height: 30,
+                  height: 70,
                 ),
-                InputTextButton(
-                  color: FifthColor,
-                  title: token == null ? "Entrar" : "Sair da conta",
+                DefaultTitleButton(
+                  title: email == "null" ? "Entrar na conta" : "Sair da conta",
                   onClick: () {
                     if (token != "null") {
                       authController.signOut();
@@ -94,11 +89,13 @@ class _AccountScreenState extends State<AccountScreen> {
                       );
                     }
                   },
+                  color: FifthColor,
+                  iconColor: lightColor,
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

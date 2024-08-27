@@ -1,4 +1,4 @@
-import 'package:Bloguee/component/buttomdefault.dart';
+import 'package:Bloguee/component/defaultTitleButtom.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/inputdefault.dart';
 import 'package:Bloguee/component/inputlight.dart';
@@ -11,15 +11,14 @@ import 'package:Bloguee/view/account/auth/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginContent extends StatefulWidget {
-  const LoginContent({super.key});
+  LoginContent({super.key, this.title});
+  bool? title = true;
 
   @override
   State<LoginContent> createState() => _LoginContentState();
 }
 
 class _LoginContentState extends State<LoginContent> {
-  bool checked = false;
-
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
@@ -44,17 +43,19 @@ class _LoginContentState extends State<LoginContent> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DefaultTitle(
-            title: "Faça login!",
-            subtitle: "Compartilhe seus momentos com seus amigos ou ",
-            subbuttom: SubTextSized(
-              align: TextAlign.start,
-              fontweight: FontWeight.w600,
-              text: "com você mesmo!",
-              size: 20,
-              color: nightColor,
-            ),
-          ),
+          widget.title == true
+              ? DefaultTitle(
+                  title: "Faça login!",
+                  subtitle: "Compartilhe seus momentos com seus amigos ou ",
+                  subbuttom: SubTextSized(
+                    align: TextAlign.start,
+                    fontweight: FontWeight.w600,
+                    text: "com você mesmo!",
+                    size: 20,
+                    color: nightColor,
+                  ),
+                )
+              : SizedBox(),
           Form(
             key: _formKey,
             child: Column(
@@ -95,12 +96,14 @@ class _LoginContentState extends State<LoginContent> {
                         child: RichDefaultText(
                             wid: GestureDetector(
                               onTap: () {
-                                (Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignUpScreen(),
+                                (
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignUpScreen(),
+                                    ),
                                   ),
-                                ));
+                                );
                               },
                               child: SubTextSized(
                                 align: TextAlign.start,
@@ -129,8 +132,9 @@ class _LoginContentState extends State<LoginContent> {
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             authController.signIn(
-                                email: emailController.text,
-                                password: passwordController.text);
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                           }
                         },
                       ),

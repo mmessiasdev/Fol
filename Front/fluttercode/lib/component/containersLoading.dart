@@ -10,7 +10,7 @@ class PostsLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 480,
+      height: MediaQuery.of(context).size.height * 1,
       child: Center(
         child: Shimmer.fromColors(
           direction: ShimmerDirection.ltr,
@@ -18,6 +18,7 @@ class PostsLoading extends StatelessWidget {
           baseColor: SixthColor,
           highlightColor: TerciaryColor,
           child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               itemCount: 3,
               // separatorBuilder: (_, __) => const SizedBox(
               //       height: 15,

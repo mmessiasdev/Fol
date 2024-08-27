@@ -158,6 +158,6 @@ class AuthController extends GetxController {
   void signOut() async {
     user.value = null;
     await LocalAuthService().clear();
-    Navigator.of(Get.overlayContext!).pushReplacementNamed('/login');
+    Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
   }
 }

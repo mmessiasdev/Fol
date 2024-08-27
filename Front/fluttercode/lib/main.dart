@@ -16,7 +16,7 @@ Future main() async {
     statusBarColor: lightColor, // cor da barra superior
     statusBarIconBrightness: Brightness.dark, // ícones da barra superior
     systemNavigationBarColor: SixthColor, // cor da barra inferior
-    systemNavigationBarIconBrightness:  
+    systemNavigationBarIconBrightness:
         Brightness.dark, // ícones da barra inferior
   ));
 

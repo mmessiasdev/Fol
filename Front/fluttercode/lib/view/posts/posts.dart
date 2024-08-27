@@ -77,7 +77,7 @@ class _PostsScreenState extends State<PostsScreen> {
             padding: defaultPaddingHorizon,
             child: ListView(
               children: [
-                const LoginContent(),
+                LoginContent(title: true,),
                 const SizedBox(
                   height: 50,
                 ),

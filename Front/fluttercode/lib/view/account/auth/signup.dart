@@ -5,7 +5,7 @@ import 'package:Bloguee/component/texts.dart';
 import 'package:Bloguee/controller/controllers.dart';
 import 'package:Bloguee/extention/string_extention.dart';
 
-import '../../../component/buttomdefault.dart';
+import '../../../component/defaultTitleButtom.dart';
 import '../../../component/inputdefault.dart';
 import 'signin.dart';
 
