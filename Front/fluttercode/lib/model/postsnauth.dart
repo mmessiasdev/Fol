@@ -6,8 +6,6 @@ class PostsNoAuth {
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
-  Null? media;
-  List<Null>? likes;
   String? fname;
 
   PostsNoAuth(
@@ -18,20 +16,17 @@ class PostsNoAuth {
       this.publishedAt,
       this.createdAt,
       this.updatedAt,
-      this.media,
-      this.fname,
-      this.likes});
+      this.fname});
 
   PostsNoAuth.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    fname = json['profile']['fname'];
     title = json['title'];
     public = json['public'];
     content = json['content'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    media = json['media'];
+    fname = json['profile']['fname'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,7 +38,8 @@ class PostsNoAuth {
     data['published_at'] = this.publishedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['media'] = this.media;
+    data['profile']['fname'] = this.fname;
+
     return data;
   }
 }

@@ -26,12 +26,8 @@
       "model": "user"
     },
     "posts": {
-      "via": "profile",
-      "collection": "post"
-    },
-    "post": {
-      "via": "likes",
-      "model": "post"
+      "collection": "post",
+      "via": "profile"
     }
   }
 }

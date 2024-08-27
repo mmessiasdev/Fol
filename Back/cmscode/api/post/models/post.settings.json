@@ -15,12 +15,14 @@
     "title": {
       "type": "string"
     },
-    "profile": {
-      "via": "posts",
-      "model": "profile"
+    "public": {
+      "type": "boolean"
+    },
+    "content": {
+      "type": "text"
     },
     "media": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -31,15 +33,9 @@
       "required": false,
       "pluginOptions": {}
     },
-    "public": {
-      "type": "boolean"
-    },
-    "likes": {
-      "collection": "profile",
-      "via": "post"
-    },
-    "content": {
-      "type": "text"
+    "profile": {
+      "via": "posts",
+      "model": "profile"
     }
   }
 }

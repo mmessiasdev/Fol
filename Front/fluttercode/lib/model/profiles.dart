@@ -4,7 +4,6 @@ class Profile {
   String? lname;
   String? email;
   User? user;
-  Null? post;
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
@@ -16,7 +15,6 @@ class Profile {
       this.lname,
       this.email,
       this.user,
-      this.post,
       this.publishedAt,
       this.createdAt,
       this.updatedAt,
@@ -28,7 +26,6 @@ class Profile {
     lname = json['lname'];
     email = json['email'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    post = json['post'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -49,7 +46,6 @@ class Profile {
     if (this.user != null) {
       data['user'] = this.user!.toJson();
     }
-    data['post'] = this.post;
     data['published_at'] = this.publishedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
@@ -68,7 +64,6 @@ class User {
   bool? confirmed;
   bool? blocked;
   int? role;
-  int? profile;
   String? createdAt;
   String? updatedAt;
 
@@ -80,7 +75,6 @@ class User {
       this.confirmed,
       this.blocked,
       this.role,
-      this.profile,
       this.createdAt,
       this.updatedAt});
 
@@ -92,7 +86,6 @@ class User {
     confirmed = json['confirmed'];
     blocked = json['blocked'];
     role = json['role'];
-    profile = json['profile'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -106,7 +99,6 @@ class User {
     data['confirmed'] = this.confirmed;
     data['blocked'] = this.blocked;
     data['role'] = this.role;
-    data['profile'] = this.profile;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;
@@ -116,20 +108,20 @@ class User {
 class Posts {
   int? id;
   String? title;
-  int? profile;
   bool? public;
   String? content;
+  int? profile;
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
-  Null? media;
+  List<Null>? media;
 
   Posts(
       {this.id,
       this.title,
-      this.profile,
       this.public,
       this.content,
+      this.profile,
       this.publishedAt,
       this.createdAt,
       this.updatedAt,
@@ -138,26 +130,24 @@ class Posts {
   Posts.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
-    profile = json['profile'];
     public = json['public'];
     content = json['content'];
+    profile = json['profile'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    media = json['media'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
-    data['profile'] = this.profile;
     data['public'] = this.public;
     data['content'] = this.content;
+    data['profile'] = this.profile;
     data['published_at'] = this.publishedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['media'] = this.media;
     return data;
   }
 }
