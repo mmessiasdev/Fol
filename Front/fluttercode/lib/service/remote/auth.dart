@@ -125,7 +125,7 @@ class RemoteAuthService {
   Future<List<PostsNoAuth>> getPostsNoAuth() async {
     List<PostsNoAuth> listItens = [];
     var response = await client.get(
-      Uri.parse('$url/posts?public_eq=true'),
+      Uri.parse('$url/posts?public_eq=true&_sort=id:DESC'),
     );
     var body = jsonDecode(response.body);
     var itemCount = body;
@@ -220,7 +220,7 @@ class RemoteAuthService {
     );
     var body = jsonDecode(response.body);
     var itemCount = body["posts"];
-    print(itemCount);
+    print(body);
     for (var i = 0; i < itemCount.length; i++) {
       listItens.add(Posts.fromJson(itemCount[i]));
     }

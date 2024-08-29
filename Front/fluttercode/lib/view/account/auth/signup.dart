@@ -1,3 +1,6 @@
+import 'package:Bloguee/component/padding.dart';
+import 'package:Bloguee/component/widgets/inputRegister.dart';
+import 'package:Bloguee/component/widgets/title.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/widgets/header.dart';
@@ -17,189 +20,121 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // final _formKey = GlobalKey<FormState>();
-  // TextEditingController lnameController = TextEditingController();
-  // TextEditingController emailController = TextEditingController();
-  // TextEditingController passwordController = TextEditingController();
-  // TextEditingController confirmController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
-  // @override
-  // void dispose() {
-  //   lnameController.dispose();
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  //   confirmController.dispose();
-  //   super.dispose();
-  // }
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: ListView(
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              color: PrimaryColor,
-            )
-            // MainHeader(
-            //     title: "Voltar", onClick: () => (Navigator.pop(context))),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 40, right: 40, top: 75),
-            //   child: SizedBox(
-            //     height: MediaQuery.of(context).size.height,
-            //     child: Form(
-            //       key: _formKey,
-            //       child: ListView(
-            //         children: [
-            //           SizedBox(
-            //             width: double.infinity,
-            //             child: PrimaryText(
-            //               text: 'Criar Conta',
-            //               color: nightColor,
-            //               align: TextAlign.start,
-            //             ),
-            //           ),
-            //           const SizedBox(height: 20),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 30),
-            //             child: Padding(
-            //               padding: const EdgeInsets.only(top: 20),
-            //               child: InputTextField(
-            //                 title: 'Nome Completo',
-            //                 // icon: Icon(Icons.person),
-            //                 textEditingController: lnameController,
-            //                 validation: (String? value) {
-            //                   if (value == null || value.isEmpty) {
-            //                     return "Esse campo não pode ficar vazio.";
-            //                   }
-            //                   return null;
-            //                 },
-            //               ),
-            //             ),
-            //           ),
-            //           const SizedBox(height: 20),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 20),
-            //             child: InputTextField(
-            //               title: 'Email',
-            //               // icon: Icon(Icons.email_rounded),
-            //               textEditingController: emailController,
-            //               validation: (String? value) {
-            //                 if (value == null || value.isEmpty) {
-            //                   return "Esse campo não pode ficar vazio.";
-            //                 } else if (!value.isValidEmail) {
-            //                   return "Esse email não é válido";
-            //                 }
-            //                 return null;
-            //               },
-            //             ),
-            //           ),
-            //           const SizedBox(height: 20),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 20),
-            //             child: InputTextField(
-            //               title: 'Senha',
-            //               // icon: Icon(Icons.lock),
-            //               obsecureText: true,
-            //               textEditingController: passwordController,
-            //               validation: (String? value) {
-            //                 List<String> _validation = [];
-            //                 if (value == null || value.isEmpty) {
-            //                   return "Esse campo não pode ficar vazio.";
-            //                 } else {
-            //                   if (!value.isValidPasswordHasNumber) {
-            //                     _validation
-            //                         .add("Sua senha precisa conter numeros");
-            //                   }
-            //                   if (!value.isValidPasswordHasCapitalLetter) {
-            //                     _validation.add(
-            //                         "Sua senha precisa conter letras maiuscular");
-            //                   }
-            //                   if (!value.isValidPasswordHasLowerCaseLetter) {
-            //                     _validation
-            //                         .add("Sua senha precisa conter letras");
-            //                   }
-            //                 }
-            //                 String msg = '';
-            //                 if (_validation.isNotEmpty) {
-            //                   for (var i = 0; i < _validation.length; i++) {
-            //                     msg = msg + _validation[i];
-            //                     if ((i + 1) != _validation.length) {
-            //                       msg = msg + "\n";
-            //                     }
-            //                   }
-            //                 }
-            //                 return msg.isNotEmpty ? msg : null;
-            //               },
-            //             ),
-            //           ),
-            //           const SizedBox(height: 20),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 20),
-            //             child: InputTextField(
-            //               // icon: Icon(Icons.lock),
-            //               title: 'Confirme sua Senha',
-            //               obsecureText: true,
-            //               textEditingController: confirmController,
-            //               validation: (String? value) {
-            //                 if (value == null || value.isEmpty) {
-            //                   return "Esse campo não pode ficar vazio.";
-            //                 } else if (passwordController.text != value) {
-            //                   return "Confirm password not match";
-            //                 }
-            //                 return null;
-            //               },
-            //             ),
-            //           ),
-            //           const SizedBox(height: 40),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 30),
-            //             child: InputTextButton(
-            //               title: "Criar Conta",
-            //               onClick: () {
-            //                 if (_formKey.currentState!.validate()) {
-            //                   authController.signUp(
-            //                     lname: lnameController.text,
-            //                     email: emailController.text,
-            //                     password: passwordController.text,
-            //                   );
-            //                 }
-            //               },
-            //             ),
-            //           ),
-            //           const SizedBox(height: 10),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 30),
-            //             child: Row(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               children: [
-            //                 const Text("Eu já tenho uma conta, "),
-            //                 InkWell(
-            //                   onTap: () {
-            //                     Navigator.pushReplacement(
-            //                         context,
-            //                         MaterialPageRoute(
-            //                             builder: (context) =>
-            //                                 const SignInScreen()));
-            //                   },
-            //                   child: const Text(
-            //                     "Fazer Login",
-            //                     style: TextStyle(color: Colors.blue),
-            //                   ),
-            //                 )
-            //               ],
-            //             ),
-            //           ),
-            //           const SizedBox(height: 10)
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-          ],
+        child: Padding(
+          padding: defaultPaddingHorizonTop,
+          child: ListView(
+            children: [
+              DefaultTitle(
+                title: "Crie sua conta.",
+                subtitle: "Crie um conta para compatilhar seus momentos!",
+              ),
+              Column(
+                children: [
+                  InputRegister(
+                    ftitle: true,
+                    textController: emailController,
+                    title: "Digite seu email:",
+                    subdesc:
+                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                  ),
+                  InputRegister(
+                    aligh: TextAlign.start,
+                    ftitle: false,
+                    textController: emailController,
+                    title: "Escolha seu nametag:",
+                    subdesc:
+                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                  ),
+                  InputRegister(
+                    ftitle: true,
+                    textController: passwordController,
+                    title: "Digite sua senha:",
+                    subdesc:
+                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      child: RichDefaultText(
+                          wid: GestureDetector(
+                            onTap: () {
+                              (
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUpScreen(),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: SubTextSized(
+                              align: TextAlign.start,
+                              color: FourtyColor,
+                              size: 16,
+                              text: "Crie uma conta.",
+                              fontweight: FontWeight.w600,
+                              tdeco: TextDecoration.underline,
+                            ),
+                          ),
+                          text: "Não tem login? ",
+                          align: TextAlign.start,
+                          size: 16,
+                          fontweight: FontWeight.normal)),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CircleAvatar(
+                    maxRadius: 40,
+                    backgroundColor: FourtyColor,
+                    child: GestureDetector(
+                      child: Icon(
+                        Icons.arrow_right_alt,
+                        color: lightColor,
+                      ),
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          authController.signIn(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
