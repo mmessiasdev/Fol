@@ -43,42 +43,67 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Padding(
-          padding: defaultPaddingHorizonTop,
-          child: ListView(
-            children: [
-              DefaultTitle(
+        child: ListView(
+          children: [
+            Padding(
+              padding: defaultPaddingHorizonTop,
+              child: DefaultTitle(
                 title: "Crie sua conta.",
                 subtitle: "Crie um conta para compatilhar seus momentos!",
               ),
-              Column(
-                children: [
-                  InputRegister(
-                    ftitle: true,
-                    textController: emailController,
-                    title: "Digite seu email:",
-                    subdesc:
-                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
-                  ),
-                  InputRegister(
-                    aligh: TextAlign.start,
-                    ftitle: false,
-                    textController: emailController,
-                    title: "Escolha seu nametag:",
-                    subdesc:
-                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
-                  ),
-                  InputRegister(
-                    ftitle: true,
-                    textController: passwordController,
-                    title: "Digite sua senha:",
-                    subdesc:
-                        "Compartilhe seus momentos com seus amigos ou com você mesmo.",
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              Row(
+            ),
+            Column(
+              children: [
+                InputRegister(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      topLeft: Radius.circular(40)),
+                  padding: defaultPaddingHorizon,
+                  ftitle: true,
+                  textController: emailController,
+                  title: "Digite seu email:",
+                  subdesc:
+                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                ),
+                InputRegister(
+                  padding: defaultPaddingHorizon,
+                  ftitle: true,
+                  textController: emailController,
+                  title: "Digite seu email:",
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      topLeft: Radius.circular(40)),
+                  subdesc:
+                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                ),
+                InputRegister(
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(40),
+                      topRight: Radius.circular(40)),
+                  padding: defaultPaddingHorizon,
+                  ftitle: false,
+                  textController: emailController,
+                  title: "Digite seu email:",
+                  subdesc:
+                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                ),
+                InputRegister(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      topLeft: Radius.circular(40)),
+                  padding: defaultPaddingHorizon,
+                  ftitle: true,
+                  textController: emailController,
+                  title: "Digite seu email:",
+                  subdesc:
+                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                ),
+              ],
+            ),
+            const SizedBox(height: 40),
+            Padding(
+              padding: defaultPaddingHorizon,
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -132,9 +157,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
-            ],
-          ),
+            ),
+            const SizedBox(height: 40),
+          ],
         ),
       ),
     );
