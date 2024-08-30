@@ -48,8 +48,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Padding(
               padding: defaultPaddingHorizonTop,
               child: DefaultTitle(
-                title: "Crie sua conta.",
-                subtitle: "Crie um conta para compatilhar seus momentos!",
+                title: "Crie sua conta!",
+                subtitle: "Para se conectar com seus amigos ",
+                subbuttom: SubTextSized(
+                  align: TextAlign.start,
+                  fontweight: FontWeight.w600,
+                  text: "ou com você mesmo.",
+                  size: 20,
+                  color: nightColor,
+                ),
               ),
             ),
             Column(
@@ -63,18 +70,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textController: emailController,
                   title: "Digite seu email:",
                   subdesc:
-                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
-                ),
-                InputRegister(
-                  padding: defaultPaddingHorizon,
-                  ftitle: true,
-                  textController: emailController,
-                  title: "Digite seu email:",
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(40),
-                      topLeft: Radius.circular(40)),
-                  subdesc:
-                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                      "Uma rede focada em todas compatilhamento externo em você.",
+                  subdescwid: "Para você.",
                 ),
                 InputRegister(
                   borderRadius: const BorderRadius.only(
@@ -85,7 +82,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textController: emailController,
                   title: "Digite seu email:",
                   subdesc:
-                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                      "Uma rede focada em todas compatilhamento externo em você.",
+                  subdescwid: "Para você.",
                 ),
                 InputRegister(
                   borderRadius: const BorderRadius.only(
@@ -96,7 +94,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textController: emailController,
                   title: "Digite seu email:",
                   subdesc:
-                      "Compartilhe seus momentos com seus amigos ou com você mesmo.",
+                      "Uma rede focada em todas compatilhamento externo em você.",
+                  subdescwid: "Para você.",
                 ),
               ],
             ),

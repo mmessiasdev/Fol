@@ -62,6 +62,7 @@ class _LoginContentState extends State<LoginContent> {
               children: [
                 InputTextField(
                   title: 'Email',
+                  fill: true,
                   textEditingController: emailController,
                   validation: (String? value) {
                     if (value == null || value.isEmpty) {
@@ -76,6 +77,7 @@ class _LoginContentState extends State<LoginContent> {
                 InputTextField(
                   title: 'Password',
                   obsecureText: true,
+                  fill: true,
                   maxLines: 1,
                   // icon: Icon(Icons.lock),
                   textEditingController: passwordController,
