@@ -150,13 +150,13 @@ class _MyContentsState extends State<MyContents> {
                     color: nightColor,
                   ),
                 ),
-                PostsLoading(),
                 Padding(
                   padding: defaultPaddingVertical,
                   child: LoginContent(
                     title: false,
                   ),
                 ),
+                PostsLoading(),
               ],
             ),
           );

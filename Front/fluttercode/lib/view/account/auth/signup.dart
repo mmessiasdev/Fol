@@ -1,6 +1,7 @@
 import 'package:Bloguee/component/padding.dart';
 import 'package:Bloguee/component/widgets/inputRegister.dart';
 import 'package:Bloguee/component/widgets/title.dart';
+import 'package:Bloguee/view/dashboard/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/widgets/header.dart';
@@ -41,13 +42,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      backgroundColor: lightColor,
       body: SafeArea(
         child: ListView(
           children: [
             Padding(
               padding: defaultPaddingHorizonTop,
               child: DefaultTitle(
+                buttom: true,
                 title: "Crie sua conta!",
                 subtitle: "Para se conectar com seus amigos ",
                 subbuttom: SubTextSized(
@@ -115,7 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignUpScreen(),
+                                    builder: (context) => const DashboardScreen(),
                                   ),
                                 ),
                               );
@@ -124,16 +126,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               align: TextAlign.start,
                               color: FourtyColor,
                               size: 16,
-                              text: "Crie uma conta.",
+                              text: "Entre",
                               fontweight: FontWeight.w600,
                               tdeco: TextDecoration.underline,
                             ),
                           ),
-                          text: "Não tem login? ",
+                          text: "Já tem um login? ",
                           align: TextAlign.start,
                           size: 16,
                           fontweight: FontWeight.normal)),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   CircleAvatar(
