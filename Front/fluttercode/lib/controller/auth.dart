@@ -19,10 +19,13 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
-  void signUp(
-      {required String lname,
-      required String email,
-      required String password}) async {
+  void signUp({
+    required String fname,
+    required String lname,
+    required String email,
+    required String username,
+    required String password,
+  }) async {
     try {
       EasyLoading.show(
         status: 'Loading...',
@@ -30,12 +33,13 @@ class AuthController extends GetxController {
       );
       var result = await RemoteAuthService().signUp(
         email: email,
+        username: username,
         password: password,
       );
       if (result.statusCode == 200) {
         String token = json.decode(result.body)['jwt'];
-        var userResult =
-            await RemoteAuthService().createProfile(lname: lname, token: token);
+        var userResult = await RemoteAuthService()
+            .createProfile(fname: fname, lname: lname, token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Conta criada. Confirme suas informações.");

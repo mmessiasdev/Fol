@@ -120,8 +120,7 @@ class _InputTextFieldState extends State<InputTextField> {
                   }),
                 )
               : null,
-          hintStyle:
-              const TextStyle(fontWeight: FontWeight.w300, fontSize: 12),
+          hintStyle: const TextStyle(fontWeight: FontWeight.w300, fontSize: 12),
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(Radius.circular(5)),

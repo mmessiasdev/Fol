@@ -11,16 +11,13 @@ import 'package:http/http.dart' as http;
 class RemoteAuthService {
   var client = http.Client();
   final storage = FlutterSecureStorage();
-
-  // String url =
-  //     String.fromEnvironment('BASEURL', defaultValue: 'localhost:1337');
-
   final url = dotenv.env["BASEURL"];
-  Future<dynamic> signUp({
-    required String email,
-    required String password,
-  }) async {
-    var body = {"username": email, "email": email, "password": password};
+
+  Future<dynamic> signUp(
+      {required String email,
+      required String password,
+      required String username}) async {
+    var body = {"username": username, "email": email, "password": password};
     var response = await client.post(
       Uri.parse('$url/auth/local/register'),
       headers: {
@@ -50,10 +47,14 @@ class RemoteAuthService {
   }
 
   Future<dynamic> createProfile({
+    required String fname,
     required String lname,
     required String token,
   }) async {
-    var body = {"lname": lname};
+    var body = {
+      "fname": fname,
+      "lname": lname,
+    };
     var response = await client.post(
       Uri.parse('$url/profiles/me'),
       headers: {

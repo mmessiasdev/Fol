@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/texts.dart';
 
-
 class MainHeader extends StatelessWidget {
   MainHeader({Key? key, required this.title, required this.onClick})
       : super(key: key);
@@ -18,8 +17,8 @@ class MainHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: SizedBox(),
           ),
           GestureDetector(

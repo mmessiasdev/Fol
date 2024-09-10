@@ -1,23 +1,25 @@
 import 'package:Bloguee/component/colors.dart';
 import 'package:Bloguee/component/inputdefault.dart';
 import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/component/widgets/title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Bloguee/extention/string_extention.dart';
 import 'package:flutter/widgets.dart';
 
 class InputRegister extends StatelessWidget {
-  InputRegister(
-      {super.key,
-      required this.textController,
-      required this.title,
-      required this.subdesc,
-      required this.ftitle,
-      required this.padding,
-      required this.borderRadius,
-      required this.subdescwid,
-      this.aligh});
+  InputRegister({
+    super.key,
+    required this.textController,
+    required this.title,
+    required this.subdesc,
+    required this.ftitle,
+    required this.padding,
+    required this.borderRadius,
+    required this.subdescwid,
+    this.password,
+    this.aligh,
+    this.textCondition,
+  });
   TextEditingController textController;
   String title;
   String subdesc;
@@ -27,7 +29,10 @@ class InputRegister extends StatelessWidget {
   EdgeInsetsGeometry padding;
   BorderRadiusGeometry borderRadius;
 
-  bool ftitle;
+  bool? ftitle;
+  bool? password;
+
+  String? Function(String?)? textCondition;
 
   Widget ImageThumb(context) {
     return ClipRRect(
@@ -78,14 +83,7 @@ class InputRegister extends StatelessWidget {
               title: title,
               fill: true,
               textEditingController: textController,
-              validation: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Esse campo não pode ficar vazio.";
-                } else if (!value.isValidEmail) {
-                  return "Insira os caracteres válido.";
-                }
-                return null;
-              },
+              validation: textCondition,
             ),
           ),
           const SizedBox(
