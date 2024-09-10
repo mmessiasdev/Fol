@@ -10,6 +10,11 @@
     "timestamps": true
   },
   "attributes": {
+    "profile": {
+      "model": "profile",
+      "via": "user",
+      "unique": true
+    },
     "username": {
       "type": "string",
       "minLength": 3,

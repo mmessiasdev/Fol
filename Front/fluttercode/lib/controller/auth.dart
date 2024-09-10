@@ -27,32 +27,50 @@ class AuthController extends GetxController {
     required String password,
   }) async {
     try {
+      // Mostrar loading
       EasyLoading.show(
         status: 'Loading...',
         dismissOnTap: false,
       );
+
+      // Chamar o serviço de autenticação para registrar o usuário
       var result = await RemoteAuthService().signUp(
         email: email,
         username: username,
         password: password,
       );
+
+      // Verificar se a resposta foi bem-sucedida
       if (result.statusCode == 200) {
+        // Extrair o token JWT da resposta
         String token = json.decode(result.body)['jwt'];
-        var userResult = await RemoteAuthService()
-            .createProfile(fname: fname, lname: lname, token: token);
+
+        // Fazer a requisição para criar o perfil
+        var userResult = await RemoteAuthService().createProfile(
+          fname: fname,
+          lname: lname,
+          token: token,
+        );
+
+        // Verificar se a criação do perfil foi bem-sucedida
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Conta criada. Confirme suas informações.");
-          Navigator.of(Get.overlayContext!).pushReplacementNamed('/login');
+          // Redirecionar para a tela de login
+          Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
         } else {
+          // Mostrar erro se a criação do perfil falhou
           EasyLoading.showError('Alguma coisa deu errado. Tente novamente!');
         }
       } else {
+        // Mostrar erro se o registro do usuário falhou
         EasyLoading.showError('Alguma coisa deu errado. Tente novamente!');
       }
     } catch (e) {
+      // Mostrar erro em caso de exceção
       EasyLoading.showError('Alguma coisa deu errado. Tente novamente!');
     } finally {
+      // Fechar o loading
       EasyLoading.dismiss();
     }
   }

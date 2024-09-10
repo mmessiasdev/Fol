@@ -56,7 +56,7 @@ class RemoteAuthService {
       "lname": lname,
     };
     var response = await client.post(
-      Uri.parse('$url/profiles/me'),
+      Uri.parse('$url/profile/me'),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token",

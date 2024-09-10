@@ -22,8 +22,10 @@
       "type": "string"
     },
     "user": {
+      "model": "user",
       "plugin": "users-permissions",
-      "model": "user"
+      "via": "profile",
+      "unique": true
     },
     "posts": {
       "collection": "post",

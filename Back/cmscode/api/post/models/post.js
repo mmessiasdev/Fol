@@ -1,8 +1,26 @@
-'use strict';
+const axios = require('axios');
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
- * to customize this model
- */
+module.exports = {
+    lifecycles: {
+        async afterCreate(result, data) {
+            const notificationData = {
+                app_id: "f49b725b-18ff-4f6e-b7b1-9bcadb116e48",
+                contents: { "en": "Novo conteúdo adicionado! Confira agora as novidades no app." },
+                included_segments: ["All"],
+            };
 
-module.exports = {};
+            axios.post('https://onesignal.com/api/v1/notifications', notificationData, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': `Basic YjU2OWVlYmYtZTA2NS00ZGJhLWI0MDctNTQzMDA5MzljYzVj`,
+                },
+            })
+                .then(response => {
+                    console.log('Notificação enviada:', response.data);
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar notificação:', error);
+                });
+        },
+    },
+};
