@@ -1,7 +1,7 @@
-import 'package:Bloguee/component/defaultButton.dart';
+import 'package:Foll/component/defaultButton.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/texts.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/texts.dart';
 
 class DefaultTitleButton extends StatelessWidget {
   final String title;

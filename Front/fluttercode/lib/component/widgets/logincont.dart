@@ -1,13 +1,13 @@
-import 'package:Bloguee/component/defaultTitleButtom.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/inputdefault.dart';
-import 'package:Bloguee/component/inputlight.dart';
-import 'package:Bloguee/component/padding.dart';
-import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/component/widgets/title.dart';
-import 'package:Bloguee/controller/controllers.dart';
-import 'package:Bloguee/extention/string_extention.dart';
-import 'package:Bloguee/view/account/auth/signup.dart';
+import 'package:Foll/component/defaultTitleButtom.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/inputdefault.dart';
+import 'package:Foll/component/inputlight.dart';
+import 'package:Foll/component/padding.dart';
+import 'package:Foll/component/texts.dart';
+import 'package:Foll/component/widgets/title.dart';
+import 'package:Foll/controller/controllers.dart';
+import 'package:Foll/extention/string_extention.dart';
+import 'package:Foll/view/account/auth/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginContent extends StatefulWidget {

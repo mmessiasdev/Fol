@@ -1,10 +1,12 @@
-import 'package:Bloguee/component/colors.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:Bloguee/route/route.dart';
-import 'package:Bloguee/route/page.dart';
+import 'package:Foll/route/route.dart';
+import 'package:Foll/route/page.dart';
 import 'package:flutter/services.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -16,6 +18,9 @@ Future main() async {
 //   await Firebase.initializeApp(
 //     options: DefaultFirebaseOptions.currentPlatform,
 // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   OneSignal.initialize("f49b725b-18ff-4f6e-b7b1-9bcadb116e48");
 

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:Bloguee/service/local/auth.dart';
-import 'package:Bloguee/service/remote/auth.dart';
+import 'package:Foll/service/local/auth.dart';
+import 'package:Foll/service/remote/auth.dart';
 import '../model/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -98,7 +98,7 @@ class AuthController extends GetxController {
           await LocalAuthService().storeToken(token);
           await LocalAuthService()
               .storeAccount(email: email, lname: lname, id: id, fname: fname);
-          EasyLoading.showSuccess("Bem vindo ao Bloguee");
+          EasyLoading.showSuccess("Bem vindo ao Foll");
           Navigator.of(Get.overlayContext!).pushReplacementNamed('/');
         } else {
           EasyLoading.showError(
@@ -150,7 +150,7 @@ class AuthController extends GetxController {
       //     'files',
       //     selectFile!,
       //     contentType: MediaType('application', 'pdf'),
-      //     filename: fileName ?? "Bloguee File",
+      //     filename: fileName ?? "Foll File",
       //   ));
 
       //   request.files.add(await http.MultipartFile.fromString("ref", "post"));

@@ -1,16 +1,16 @@
-import 'package:Bloguee/component/containersLoading.dart';
-import 'package:Bloguee/component/inputdefault.dart';
-import 'package:Bloguee/component/widgets/logincont.dart';
-import 'package:Bloguee/component/post.dart';
-import 'package:Bloguee/component/widgets/title.dart';
-import 'package:Bloguee/controller/controllers.dart';
-import 'package:Bloguee/model/postsnauth.dart';
+import 'package:Foll/component/containersLoading.dart';
+import 'package:Foll/component/inputdefault.dart';
+import 'package:Foll/component/widgets/logincont.dart';
+import 'package:Foll/component/post.dart';
+import 'package:Foll/component/widgets/title.dart';
+import 'package:Foll/controller/controllers.dart';
+import 'package:Foll/model/postsnauth.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/padding.dart';
-import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/service/local/auth.dart';
-import 'package:Bloguee/service/remote/auth.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/padding.dart';
+import 'package:Foll/component/texts.dart';
+import 'package:Foll/service/local/auth.dart';
+import 'package:Foll/service/remote/auth.dart';
 import 'package:http/http.dart' as http;
 
 class PostsScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Bloguee/component/colors.dart';
+import 'package:Foll/component/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InputTextField extends StatefulWidget {

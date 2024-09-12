@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:Bloguee/model/postsnauth.dart';
-import 'package:Bloguee/model/profiles.dart';
+import 'package:Foll/model/postsnauth.dart';
+import 'package:Foll/model/profiles.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:Bloguee/model/postFiles.dart';
+import 'package:Foll/model/postFiles.dart';
 import 'package:http/http.dart' as http;
 
 // const url = String.fromEnvironment('BASEURL', defaultValue: '');

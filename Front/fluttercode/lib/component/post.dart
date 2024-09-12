@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/view/posts/post/screen.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/texts.dart';
+import 'package:Foll/view/posts/post/screen.dart';
 
 class WidgetPosts extends StatelessWidget {
   WidgetPosts(

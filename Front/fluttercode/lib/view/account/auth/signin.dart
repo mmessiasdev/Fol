@@ -1,14 +1,14 @@
-import 'package:Bloguee/component/defaultButton.dart';
-import 'package:Bloguee/view/dashboard/screen.dart';
-import 'package:Bloguee/view/posts/posts.dart';
+import 'package:Foll/component/defaultButton.dart';
+import 'package:Foll/view/dashboard/screen.dart';
+import 'package:Foll/view/posts/posts.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/widgets/header.dart';
-import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/controller/controllers.dart';
-import 'package:Bloguee/extention/string_extention.dart';
-import 'package:Bloguee/component/defaultTitleButtom.dart';
-import 'package:Bloguee/component/inputdefault.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/widgets/header.dart';
+import 'package:Foll/component/texts.dart';
+import 'package:Foll/controller/controllers.dart';
+import 'package:Foll/extention/string_extention.dart';
+import 'package:Foll/component/defaultTitleButtom.dart';
+import 'package:Foll/component/inputdefault.dart';
 
 import 'signup.dart';
 

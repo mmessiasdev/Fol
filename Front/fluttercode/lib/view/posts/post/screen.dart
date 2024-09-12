@@ -1,14 +1,14 @@
-import 'package:Bloguee/component/buttomborder.dart';
-import 'package:Bloguee/component/padding.dart';
-import 'package:Bloguee/model/postFiles.dart';
-import 'package:Bloguee/service/local/auth.dart';
-import 'package:Bloguee/service/remote/auth.dart';
+import 'package:Foll/component/buttomborder.dart';
+import 'package:Foll/component/padding.dart';
+import 'package:Foll/model/postFiles.dart';
+import 'package:Foll/service/local/auth.dart';
+import 'package:Foll/service/remote/auth.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/widgets/header.dart';
-import 'package:Bloguee/component/texts.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/widgets/header.dart';
+import 'package:Foll/component/texts.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'dart:typed_data';
 // import 'dart:html' as html;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90968475269",
+    "project_id": "follproject",
+    "storage_bucket": "follproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90968475269:android:0d937a119355f35dd10bec",
+        "android_client_info": {
+          "package_name": "com.example.foll"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9qP_EbAywbl0scq0G_CSIGRPpIdBtGzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

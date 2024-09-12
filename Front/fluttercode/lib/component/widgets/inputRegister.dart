@@ -1,9 +1,9 @@
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/component/inputdefault.dart';
-import 'package:Bloguee/component/texts.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/component/inputdefault.dart';
+import 'package:Foll/component/texts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/extention/string_extention.dart';
+import 'package:Foll/extention/string_extention.dart';
 import 'package:flutter/widgets.dart';
 
 class InputRegister extends StatelessWidget {

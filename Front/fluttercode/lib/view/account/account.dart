@@ -1,12 +1,12 @@
-import 'package:Bloguee/component/defaultButton.dart';
-import 'package:Bloguee/component/padding.dart';
-import 'package:Bloguee/component/texts.dart';
-import 'package:Bloguee/component/widgets/infotext.dart';
-import 'package:Bloguee/component/widgets/title.dart';
-import 'package:Bloguee/service/local/auth.dart';
+import 'package:Foll/component/defaultButton.dart';
+import 'package:Foll/component/padding.dart';
+import 'package:Foll/component/texts.dart';
+import 'package:Foll/component/widgets/infotext.dart';
+import 'package:Foll/component/widgets/title.dart';
+import 'package:Foll/service/local/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/widgets/header.dart';
-import 'package:Bloguee/controller/controllers.dart';
+import 'package:Foll/component/widgets/header.dart';
+import 'package:Foll/controller/controllers.dart';
 
 import '../../component/defaultTitleButtom.dart';
 import '../../component/colors.dart';

@@ -1,4 +1,4 @@
-import 'package:Bloguee/component/texts.dart';
+import 'package:Foll/component/texts.dart';
 import 'package:flutter/material.dart';
 
 class InfoText extends StatelessWidget {

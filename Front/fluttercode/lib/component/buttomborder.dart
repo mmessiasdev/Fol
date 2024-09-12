@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Bloguee/component/texts.dart';
+import 'package:Foll/component/texts.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InputOutlineButton extends StatelessWidget {

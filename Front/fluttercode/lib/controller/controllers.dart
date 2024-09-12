@@ -1,4 +1,4 @@
-import 'package:Bloguee/controller/auth.dart';
+import 'package:Foll/controller/auth.dart';
 
 import 'dashboard.dart';
 

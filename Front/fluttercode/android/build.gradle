@@ -1,7 +1,7 @@
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        google()  // Certifique-se de que esta linha está presente
+        mavenCentral()  // Opcional, mas geralmente incluído
     }
 }
 
@@ -15,4 +15,15 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+
+buildscript {
+    repositories {
+        google()  // Certifique-se de que esta linha está presente
+        mavenCentral()  // Opcional, mas geralmente incluído
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.0'  // Exemplo de versão do plugin Gradle
+        classpath 'com.google.gms:google-services:4.3.10'  // Versão do plugin Google Services
+    }
 }

@@ -1,11 +1,11 @@
-import 'package:Bloguee/service/local/auth.dart';
+import 'package:Foll/service/local/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-import 'package:Bloguee/view/posts/posts.dart';
+import 'package:Foll/view/posts/posts.dart';
 import 'package:get/get.dart';
-import 'package:Bloguee/component/colors.dart';
-import 'package:Bloguee/controller/dashboard.dart';
-import 'package:Bloguee/view/home/mycontents.dart';
+import 'package:Foll/component/colors.dart';
+import 'package:Foll/controller/dashboard.dart';
+import 'package:Foll/view/home/mycontents.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
